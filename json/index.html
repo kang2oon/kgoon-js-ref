@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>json load</title>
+</head>
+<body>
+    <ul id="real_recruit">
+        
+    </ul>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+        $.ajax({
+            type: "GET",
+            dataType: "text",
+            url: "recruit_list.txt",
+            success: recruit_list
+        });
+        function recruit_list(json){
+            var recruitlist = $.parseJSON(json);
+            var recruitlistCtn = recruitlist.length;
+            var recruitContent = "";
+            for(var i=0; i<recruitlistCtn; i++){
+                recruitContent += "<li><a href=\""+recruitlist[i].link+"\"' target=\"_blank\">";
+                recruitContent += "<span class=\"job_subject\">"+recruitlist[i].name+"</span>";
+                recruitContent += "<span class=\"l_go\">바로가기</span>";
+                recruitContent += "</a></li>";
+            }
+            $("#real_recruit").append(recruitContent);
+        }
+    </script>
+</body>
+</html>

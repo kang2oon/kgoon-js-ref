@@ -1,0 +1,27 @@
+    
+[
+	{
+		"name" : "[기술영업] 하이닉스담당(영업지원) 신입 모집",
+		"link" : "https://www.jobaba.net/empmn/desEntDtl.do?bizrno=1448106851&apiSeq=32964571&seStl=J&entCd=null"
+	},
+    {
+		"name" : "국내 및 해외영업 팀장급 채용",
+		"link" : "https://www.jobaba.net/empmn/desEntDtl.do?bizrno=1318150609&apiSeq=K151411907010007&seStl=W&entCd=null"
+	},
+    {
+		"name" : "지니언스(주) - [기술연구소] 프론트엔드 개발자 채용",
+		"link" : "https://www.jobaba.net/empmn/desEntDtl.do?bizrno=1298180148&apiSeq=33023187&seStl=J&entCd=null"
+	},
+    {
+		"name" : "2019 하반기 신입사원 공개채용",
+		"link" : "https://www.jobaba.net/empmn/desEntDtl.do?bizrno=2148121976&apiSeq=33010361&seStl=J&entCd=null"
+	},
+    {
+		"name" : "영어교육연구원 (동화 한영번역사 채용)",
+		"link" : "https://www.jobaba.net/empmn/desEntDtl.do?bizrno=1198601044&apiSeq=32951092&seStl=J&entCd=null"
+	},
+    {
+		"name" : "비파괴검사 신입및 경력자 모집합니다",
+		"link" : "https://www.jobaba.net/empmn/desEntDtl.do?bizrno=2108175484&apiSeq=K151231907020024&seStl=W&entCd=null"
+	}
+]
