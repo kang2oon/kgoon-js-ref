@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<title>시나리오</title>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="/syn2/css/style.css" />
+</head>
+<body>
+<div class="ctain-fluid header">
+	<canvas id="particle"></canvas>
+	<div class="ctain title">
+		<img src="/syn2/images/tit_header.png" alt="나를 위한 맞춤정책" />
+	</div>
+	<div class="ctain fav_wrap">
+		<div class="fav_item">
+			<div class="ico active"><img src="/syn2/images/ico_fav01.png" alt="" /></div>
+			재직지원
+		</div>
+		<div class="fav_item">
+			<div class="ico"><img src="/syn2/images/ico_fav02.png" alt="" /></div>
+			취업지원
+		</div>
+		<div class="fav_item">
+			<div class="ico"><img src="/syn2/images/ico_fav03.png" alt="" /></div>
+			창업지원
+		</div>
+		<div class="fav_item">
+			<div class="ico"><img src="/syn2/images/ico_fav04.png" alt="" /></div>
+			귀농&middot;귀촌
+		</div>
+		<div class="fav_item">
+			<div class="ico"><img src="/syn2/images/ico_fav05.png" alt="" /></div>
+			기업지원
+		</div>
+		<div class="fav_item">
+			<div class="ico"><img src="/syn2/images/ico_fav06.png" alt="" /></div>
+			주거&middot;교통
+		</div>
+		<div class="fav_item">
+			<div class="ico"><img src="/syn2/images/ico_fav07.png" alt="" /></div>
+			생활&middot;금융
+		</div>
+		<div class="fav_item">
+			<div class="ico"><img src="/syn2/images/ico_fav08.png" alt="" /></div>
+			교육&middot;활동
+		</div>
+	</div>
+	<div class="ctain add_sel_wrap">
+		<div class="sel_fav_item">
+			<img src="/syn2/images/ico_fav01.png" />
+		</div>
+		<h3>추가 정보 선택</h3>
+		<div class="select_wrap">
+			<select>
+				<option>생애주기 선택</option>
+				<option>청년(18~34세)</option>
+				<option>중년(35~49세)</option>
+				<option>장년(50~64세)</option>
+				<option>어르신(65세 이상)</option>
+			</select>
+			<select>
+				<option>성별 선택</option>
+				<option>남성</option>
+				<option>여성</option>
+			</select>
+			<select>
+				<option>특화대상 선택</option>
+				<option>경력단절여성</option>
+				<option>장애인</option>
+				<option>다문화/새터민</option>
+				<option>저소득층</option>
+				<option>신혼부부</option>
+				<option>다자녀</option>
+				<option>외국인(재외국인)</option>
+			</select>
+			<select>
+				<option>고용상태 선택</option>
+				<option>구직자</option>
+				<option>재직자</option>
+				<option>사업주</option>
+				<option>예비창업자</option>
+			</select>
+			<select>
+				<option>지역 선택</option>
+				<option>경기 전체</option>
+				<option>가평군</option>
+				<option>고양시</option>
+				<option>과천시</option>
+				<option>광명시</option>
+				<option>광주시</option>
+				<option>구리시</option>
+				<option>군포시</option>
+				<option>김포시</option>
+				<option>남양주시</option>
+				<option>동두천시</option>
+				<option>부천시</option>
+				<option>성남시</option>
+				<option>수원시</option>
+				<option>시흥시</option>
+				<option>안산시</option>
+				<option>안성시</option>
+				<option>안양시</option>
+				<option>양주시</option>
+				<option>양평군</option>
+				<option>여주시</option>
+				<option>연천군</option>
+				<option>오산시</option>
+				<option>용인시</option>
+				<option>의왕시</option>
+				<option>의정부시</option>
+				<option>이천시</option>
+				<option>파주시</option>
+				<option>평택시</option>
+				<option>포천시</option>
+				<option>하남시</option>
+				<option>화성시</option>
+			</select>
+		</div>
+	</div>
+</div>
+<div class="ctain-fluid contents">
+	<div class="ctain sel_val_wrap">
+		<div class="sel_val">
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />청년(19~34세)</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />여성</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />신혼부부</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />재직자</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />부천시</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />청년(19~34세)</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />여성</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />신혼부부</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />재직자</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />부천시</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />청년(19~34세)</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />여성</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />신혼부부</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />재직자</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />부천시</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />청년(19~34세)</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />여성</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />신혼부부</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />재직자</div>
+			<div><img src="/syn2/images/s_del_icon.png" alt="삭제" />부천시</div>
+		</div>
+		<div class="all_del">
+			<img src="/syn2/images/b_del_icon.png" alt="전체 삭제" />
+		</div>
+	</div>
+	<div class="ctain clearfix">
+		<div class="scenario_wrap clearfix">
+			<div class="scenario">
+				<img src="/syn2/images/thumb_scenario01.png" alt="" />
+				<p>면접이 잡혔는데, 입고 갈 옷이 없어요. <em>혹시 정장을 무료로 빌려주는 곳</em>이 있나요?</p>
+				<div class="over"><p>면접이 잡혔는데, 입고 갈 옷이 없어요. <em>혹시 정장을 무료로 빌려주는 곳</em>이 있나요?</p></div>
+			</div>
+			<div class="scenario">
+				<img src="/syn2/images/thumb_scenario02.png" alt="" />
+				<p>취업에 대해 객관적으로 <em>멘토링</em>해 주실 분 없나요?</p>
+				<div class="over"><p>취업에 대해 객관적으로 <em>멘토링</em>해 주실 분 없나요?</p></div>
+			</div>
+			<div class="scenario">
+				<p><em>앞으로 어떤 일을 해야 하는지</em>, 제가 생각하는 길이 맞는지 알 수 있는 방법이 없을까요?</p>
+				<div class="over"><p><em>앞으로 어떤 일을 해야 하는지</em>, 제가 생각하는 길이 맞는지 알 수 있는 방법이 없을까요?</p></div>
+			</div>
+			<div class="scenario">
+				<img src="/syn2/images/thumb_scenario03.png" alt="" />
+				<p>경기도 내에 믿고 갈 수 있는 <em>괜찮은 직장 정보</em>를 찾고 싶어요.</p>
+				<div class="over"><p>경기도 내에 믿고 갈 수 있는 <em>괜찮은 직장 정보</em>를 찾고 싶어요.</p></div>
+			</div>
+			<div class="scenario">
+				<img src="/syn2/images/thumb_scenario04.png" alt="" />
+				<p><em>공공기관에서 인턴</em>처럼 일 해 볼 수 있는 방법이 있을까요?</p>
+				<div class="over"><p><em>공공기관에서 인턴</em>처럼 일 해 볼 수 있는 방법이 있을까요?</p></div>
+			</div>
+			<div class="scenario">
+				<p><em>앞으로 어떤 일을 해야 하는지</em>, 제가 생각하는 길이 맞는지 알 수 있는 방법이 없을까요?</p>
+				<div class="over"><p><em>앞으로 어떤 일을 해야 하는지</em>, 제가 생각하는 길이 맞는지 알 수 있는 방법이 없을까요?</p></div>
+			</div>
+			<div class="scenario">
+				<img src="/syn2/images/thumb_scenario05.png" alt="" />
+				<p>경기도 내에 믿고 갈 수 있는 <em>괜찮은 직장 정보</em>를 찾고 싶어요.</p>
+				<div class="over"><p>경기도 내에 믿고 갈 수 있는 <em>괜찮은 직장 정보</em>를 찾고 싶어요.</p></div>
+			</div>
+			<div class="scenario active">
+				<img src="/syn2/images/thumb_scenario06.png" alt="" />
+				<p>면접이 잡혔는데, 입고 갈 옷이 없어요. <em>혹시 정장을 무료로 빌려주는 곳</em>이 있나요?</p>
+				<div class="over">
+					<p>면접이 잡혔는데, 입고 갈 옷이 없어요. <em>혹시 정장을 무료로 빌려주는 곳</em>이 있나요?</p>
+				</div>
+			</div>
+			<div class="scenario">
+				<img src="/syn2/images/thumb_scenario07.png" alt="" />
+				<p>취업에 대해 객관적으로 <em>멘토링</em>해 주실 분 없나요?</p>
+				<div class="over"><p>취업에 대해 객관적으로 <em>멘토링</em>해 주실 분 없나요?</p></div>
+			</div>
+			<div class="scenario">
+				<p><em>앞으로 어떤 일을 해야 하는지</em>, 제가 생각하는 길이 맞는지 알 수 있는 방법이 없을까요?</p>
+				<div class="over"><p><em>앞으로 어떤 일을 해야 하는지</em>, 제가 생각하는 길이 맞는지 알 수 있는 방법이 없을까요?</p></div>
+			</div>
+			<div class="scenario">
+				<p><em>앞으로 어떤 일을 해야 하는지</em>, 제가 생각하는 길이 맞는지 알 수 있는 방법이 없을까요?</p>
+				<div class="over"><p><em>앞으로 어떤 일을 해야 하는지</em>, 제가 생각하는 길이 맞는지 알 수 있는 방법이 없을까요?</p></div>
+			</div>
+			<div class="scenario">
+				<img src="/syn2/images/thumb_scenario08.png" alt="" />
+				<p>경기도 내에 믿고 갈 수 있는 <em>괜찮은 직장 정보</em>를 찾고 싶어요.</p>
+				<div class="over"><p>경기도 내에 믿고 갈 수 있는 <em>괜찮은 직장 정보</em>를 찾고 싶어요.</p></div>
+			</div>
+			<div class="scenario">
+				<img src="/syn2/images/thumb_scenario01.png" alt="" />
+				<p>면접이 잡혔는데, 입고 갈 옷이 없어요. <em>혹시 정장을 무료로 빌려주는 곳</em>이 있나요?</p>
+				<div class="over"><p>면접이 잡혔는데, 입고 갈 옷이 없어요. <em>혹시 정장을 무료로 빌려주는 곳</em>이 있나요?</p></div>
+			</div>
+			<div class="scenario">
+				<img src="/syn2/images/thumb_scenario02.png" alt="" />
+				<p>취업에 대해 객관적으로 <em>멘토링</em>해 주실 분 없나요?</p>
+				<div class="over"><p>취업에 대해 객관적으로 <em>멘토링</em>해 주실 분 없나요?</p></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="ctain policy_wrap">
+	<div class="policy_cnt">
+		<div class="cnt">총 <em>23</em>개의 정책이 있습니다.</div>
+		<div>
+			<select>
+				<option>10개씩 보기</option>
+				<option>20개씩 보기</option>
+				<option>30개씩 보기</option>
+				<option>50개씩 보기</option>
+			</select>
+		</div>
+	</div>
+	<div class="rsp_table">
+		<table>
+		<colgroup>
+			<col width="70"/>
+			<col width="100"/>
+			<col />
+			<col width="210"/>
+			<col width="110"/>
+			<col width="130"/>
+		</colgroup>
+		<thead>
+		<tr>
+			<th>번호</th>
+			<th>카테고리</th>
+			<th>정책명</th>
+			<th>주최기관</th>
+			<th>지역</th>
+			<th>기간</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>23</td>
+			<td>구직활동</td>
+			<td class="tit">온라인 진로정보망 커리어넷</td>
+			<td>한국직업능력개발원</td>
+			<td>전체</td>
+			<td>~2020.07.26</td>
+		</tr>
+		<tr>
+			<td>22</td>
+			<td>구직활동</td>
+			<td class="tit">제대군인 사회복귀 지원사업(제대군인취업지원)</td>
+			<td>국가보훈처</td>
+			<td>의정부시</td>
+			<td>~2020.07.26</td>
+		</tr>
+		<tr>
+			<td>21</td>
+			<td>구직활동</td>
+			<td class="tit">여주시 용이동 청년하우스(경기도시공사 사회적주택) 입주자 모집</td>
+			<td>여주시 청년활동지원센터</td>
+			<td>전체</td>
+			<td>~2020.07.26</td>
+		</tr>
+		<tr>
+			<td>20</td>
+			<td>구직활동</td>
+			<td class="tit">[과천시] 2020년 과천시 노후경유차 배출가스 저감장치 부착 지원사업</td>
+			<td>aT한국농수산식품유통공사</td>
+			<td>강평군 외 30</td>
+			<td>모집완료 시</td>
+		</tr>
+		<tr>
+			<td>19</td>
+			<td>구직활동</td>
+			<td class="tit">[시흥시] 2020년도 소상공인 특례보증 및 이차보전 지원계획 공고</td>
+			<td>시흥시청</td>
+			<td>전체</td>
+			<td>~2020.07.26</td>
+		</tr>
+		<tr>
+			<td>18</td>
+			<td>구직활동</td>
+			<td class="tit">뽑히는 무료사진촬영(매주 수요일)</td>
+			<td>청취다방</td>
+			<td>고양시</td>
+			<td>상시</td>
+		</tr>
+		<tr>
+			<td>17</td>
+			<td>구직활동</td>
+			<td class="tit">[평택시] 신종 코로나바이러스 및 일본수출규제에 따른 피해기업 공동지원을 위한 동반성장 지원사업 공고</td>
+			<td>평택시청</td>
+			<td>전체</td>
+			<td>~2020.07.26</td>
+		</tr>
+		<tr>
+			<td>16</td>
+			<td>구직활동</td>
+			<td class="tit">가락동 큰바위 청년둥지(SH사회적주택) 입주(대기)자 모집</td>
+			<td>SH서울주택도시공사</td>
+			<td>포천시</td>
+			<td>상시</td>
+		</tr>
+		<tr>
+			<td>15</td>
+			<td>구직활동</td>
+			<td class="tit">[2020 창업&middot;중소기업 수출제품 DOOR TO DOOR 국제운송(EMS) 지원사업] 참가업체 모집</td>
+			<td>사단법인 가치있는 누림</td>
+			<td>전체</td>
+			<td>~2020.07.26</td>
+		</tr>
+		<tr>
+			<td>14</td>
+			<td>구직활동</td>
+			<td class="tit">경기북부 환경분야 청년취업 지원 프로그램</td>
+			<td>경기도환경기술지원센터</td>
+			<td>포천시</td>
+			<td>상시</td>
+		</tr>
+		</tbody>
+		</table>
+	</div>
+	<div class="policy_guide">※ 현재 지원가능한 정책만 보여집니다.</div>
+	<div class="page_wrap">
+		<a href="javascript:void(0);">&lt;&lt;</a>
+		<a href="javascript:void(0);">&lt;</a>
+		<a href="javascript:void(0);" class="current">1</a>
+		<a href="javascript:void(0);">2</a>
+		<a href="javascript:void(0);">3</a>
+		<a href="javascript:void(0);">4</a>
+		<a href="javascript:void(0);">5</a>
+		<a href="javascript:void(0);">&gt;</a>
+		<a href="javascript:void(0);">&gt;&gt;</a>
+	</div>
+</div>
+<div class="ctain-fluid dic_wrap">
+	<h2>함께보면 좋은 정보</h2>
+	<div class="ctain tag_list">
+		<a href="javascript:void(0);">교통비</a>
+		<a href="javascript:void(0);">대중교통</a>
+		<a href="javascript:void(0);">부천시</a>
+		<a href="javascript:void(0);">청년혜택</a>
+	</div>
+	<div class="ctain dic_cont_wrap">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic01.png" alt="" />
+					<div class="dic_cont">
+						<h3>탐나는기업</h3>
+						<p>
+							<strong>엠피온㈜</strong>
+							교통솔루션 분야에서 최고의 기술력과 영업
+						</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic02.png" alt="" />
+					<div class="dic_cont">
+						<h3>잡학사전</h3>
+						<p>
+							<strong>주거&middot;자산</strong>
+							산업단지 근로자 청년 교통비 5만원 줄이는 꿀팁!!
+						</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic03.png" alt="" />
+					<div class="dic_cont">
+						<h3>잡학사전</h3>
+						<p>
+							<strong>주거&middot;자산</strong>
+							마일리지 혜택이 더 커졌다! 서울, 대구, 광주 청년이라면 주목! 광역알뜰교통카드
+						</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic04.png" alt="" />
+					<div class="dic_cont">
+						<h3>탐나는기업</h3>
+						<p>
+							<strong>(주)에이텍시스템</strong>
+							IT 토탈서비스의 강자 에이텍시스템
+						</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic01.png" alt="" />
+					<div class="dic_cont">
+						<h3>탐나는기업</h3>
+						<p>
+							<strong>엠피온㈜</strong>
+							교통솔루션 분야에서 최고의 기술력과 영업
+						</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic02.png" alt="" />
+					<div class="dic_cont">
+						<h3>잡학사전</h3>
+						<p>
+							<strong>주거&middot;자산</strong>
+							산업단지 근로자 청년 교통비 5만원 줄이는 꿀팁!!
+						</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic03.png" alt="" />
+					<div class="dic_cont">
+						<h3>잡학사전</h3>
+						<p>
+							<strong>주거&middot;자산</strong>
+							마일리지 혜택이 더 커졌다! 서울, 대구, 광주 청년이라면 주목! 광역알뜰교통카드
+						</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic04.png" alt="" />
+					<div class="dic_cont">
+						<h3>탐나는기업</h3>
+						<p>
+							<strong>(주)에이텍시스템</strong>
+							IT 토탈서비스의 강자 에이텍시스템
+						</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic01.png" alt="" />
+					<div class="dic_cont">
+						<h3>탐나는기업</h3>
+						<p>
+							<strong>엠피온㈜</strong>
+							교통솔루션 분야에서 최고의 기술력과 영업
+						</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic02.png" alt="" />
+					<div class="dic_cont">
+						<h3>잡학사전</h3>
+						<p>
+							<strong>주거&middot;자산</strong>
+							산업단지 근로자 청년 교통비 5만원 줄이는 꿀팁!!
+						</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic03.png" alt="" />
+					<div class="dic_cont">
+						<h3>잡학사전</h3>
+						<p>
+							<strong>주거&middot;자산</strong>
+							마일리지 혜택이 더 커졌다! 서울, 대구, 광주 청년이라면 주목! 광역알뜰교통카드
+						</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="/syn2/images/thumb_dic04.png" alt="" />
+					<div class="dic_cont">
+						<h3>탐나는기업</h3>
+						<p>
+							<strong>(주)에이텍시스템</strong>
+							IT 토탈서비스의 강자 에이텍시스템
+						</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="swiper-pagination"></div>
+		<div class="swiper-button-prev div_prev"><img src="/syn2/images/left_sign.png" alt="이전" /></div>
+		<div class="swiper-button-next div_next"><img src="/syn2/images/right_sign.png" alt="다음" /></div>
+	</div>
+	
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" ></script>
+<script src="https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+<script src="/syn2/js/particle.js"></script>
+<script>
+	$('.fav_wrap .fav_item').click(function(){
+		$('.fav_item .ico').removeClass('active');
+		$(this).children('.ico').addClass('active');
+		var img = $(this).find('img').attr('src');
+		$('.add_sel_wrap .sel_fav_item img').attr('src', img);
+	});
+	$('.all_del').click(function(){
+		$('.sel_val').empty();
+	});
+	$('.sel_val>div>img').click(function(){
+		$(this).parent().fadeOut();
+	});
+	$('.scenario_wrap').isotope({
+		itemSelector: '.scenario',
+		percentPosition: true
+	});
+	var mySwiper = new Swiper ('.swiper-container', {
+		slidesPerView: 1,
+		spaceBetween: 10,
+		loop: true,
+		pagination: {
+			el: '.swiper-pagination',
+			type: 'fraction'
+		},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+		breakpoints: {
+			580: {
+				slidesPerView: 2,
+				slidesPerGroup: 2,
+				spaceBetween: 15,
+				pagination: {
+					type: 'bullets',
+					clickable: true
+				},
+			},
+			768: {
+				slidesPerView: 3,
+				slidesPerGroup: 3,
+				spaceBetween: 20,
+				pagination: {
+					type: 'bullets',
+					clickable: true
+				},
+			},
+			1024: {
+				slidesPerView: 4,
+				slidesPerGroup: 4,
+				spaceBetween: 27,
+				pagination: {
+					type: 'bullets',
+					clickable: true
+				},
+			}
+		}
+	  });
+</script>
+</body>
+</html>
