@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Location</title>
+	<style>
+		ul#news{}
+		ul#news li{margin-bottom:25px;}
+		ul#news li a{font-size:15px;display:block;}
+		ul#news li span{font-size:12px;color:#999;}
+	</style>
+</head>
+<body>
+	<ul id="news"></ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script>
+		$.ajax({
+		  type: "GET",
+		  dataType: "json",
+		  url: "https://script.google.com/macros/s/AKfycbxWJhhnSufjDlaxRi4X5fnhjCwSV_xA4PQFdwBsmUp3ERof3Enc/exec?sheetName=yhnews",
+		  success: function(obj){
+			var arrData = obj.data;
+			news_list(arrData);
+		  }
+		});
+		
+		function news_list(arrData){
+			//var newslist = $.parseJSON(json);
+			var newslistCtn = arrData.length;
+			var newsCont = "";
+			for(var i=0; i<newslistCtn; i++){
+				newsCont += "<li><a href=\"https:"+arrData[i].goto_url+"\" target=\"_blank\">"+arrData[i].news_title+"</a>";
+				newsCont += "<span>"+arrData[i].reg_date+"</span>"
+				newsCont += "</li>"
+			}
+			$("#news").append(newsCont);
+		}
+	</script>
+</body>
+</html>
