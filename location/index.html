@@ -33,6 +33,7 @@
 			var newsCont = "";
 			for(var i=0; i<newslistCtn; i++){
 				newsCont += "<li><a href=\"https:"+arrData[i].goto_url+"\" target=\"_blank\">"+arrData[i].news_title+"</a>";
+				newsCont += "<p>"+arrData[i].desc+"</p>"
 				newsCont += "<span>"+arrData[i].reg_date+"</span>"
 				newsCont += "</li>"
 			}
