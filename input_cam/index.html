@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>카메라 제어</title>
+</head>
+<body>
+	<input type="file" accept="image/*;capture=camera"><br/><br/>
+	<input type="file" accept="video/*;capture=camcorder"><br/><br/>
+	<input type="file" accept="audio/*;capture=microphone">
+	
+<video autoplay></video>
+
+<script>
+  var errorCallback = function(e) {
+    console.log('Reeeejected!', e);
+  };
+
+  // Not showing vendor prefixes.
+  navigator.getUserMedia({video: true, audio: true}, function(localMediaStream) {
+    var video = document.querySelector('video');
+    video.src = window.URL.createObjectURL(localMediaStream);
+
+    // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
+    // See crbug.com/110938.
+    video.onloadedmetadata = function(e) {
+      // Ready to go. Do some stuff.
+    };
+  }, errorCallback);
+</script>
+</body>
+</html>
