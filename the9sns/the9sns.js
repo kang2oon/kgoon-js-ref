@@ -34,7 +34,3 @@ $(document).ready(function(){
         },
     });
 });
-
-function md_signin(){
-    $('.modal_wrap, #md_signin').show();
-}
