@@ -27,10 +27,21 @@ $(document).ready(function(){
         autoplay: {
             delay: 3000,
             disableOnInteraction: true,
-          },
+        },
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
+        },
+    });
+
+    var order = new Swiper('.order-list', {
+        direction: "vertical",
+        slidesPerView: 4,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: true,
         },
     });
 });
