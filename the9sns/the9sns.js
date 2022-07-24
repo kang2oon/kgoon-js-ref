@@ -12,9 +12,27 @@ $(document).ready(function(){
         $('.modal_wrap, #md_signin').hide();
     });
 
-    var cnt_num = $('.count_wrap div strong');
-    var cnt_num_com = cnt_num.toLocaleString('ko-KR');
-    cnt_num.text(cnt_num_com);
+    $('.count_wrap div strong').each(function(){
+        var cnt_num = $(this).text();
+        console.log(cnt_num);
+        var cnt_num_com = cnt_num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        console.log(cnt_num_com);
+        $(this).text(cnt_num_com);
+    });
+
+    var sfSlider = new Swiper('.special_feature', {
+        slidesPerView: 4,
+        spaceBetween: 16,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: true,
+          },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
 });
 
 function md_signin(){
