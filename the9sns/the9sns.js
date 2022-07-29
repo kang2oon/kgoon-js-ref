@@ -79,7 +79,7 @@ $(document).ready(function(){
     });
 
     var youtube = new Swiper('.youtube', {
-        slidesPerView: 2,
+        slidesPerView: 3,
         spaceBetween: 0,
         loop: true,
         centeredSlides: true,
