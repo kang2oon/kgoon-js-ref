@@ -14,14 +14,36 @@ $(document).ready(function(){
 
     $('.count_wrap div strong').each(function(){
         var cnt_num = $(this).text();
-        console.log(cnt_num);
+        //console.log(cnt_num);
         var cnt_num_com = cnt_num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        console.log(cnt_num_com);
+        //console.log(cnt_num_com);
         $(this).text(cnt_num_com);
     });
 
+    var review = new Swiper('.review', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            1024: {
+                slidesPerView: 3,
+            },
+            768: {
+                slidesPerView: 2,
+            }
+        }
+    });
+
     var sfSlider = new Swiper('.special_feature', {
-        slidesPerView: 4,
+        slidesPerView: 1,
         spaceBetween: 16,
         loop: true,
         autoplay: {
@@ -32,6 +54,17 @@ $(document).ready(function(){
             el: '.swiper-pagination',
             clickable: true,
         },
+        breakpoints: {
+            1280: {
+                slidesPerView: 4,
+              },
+            1024: {
+                slidesPerView: 3,
+            },
+            768: {
+                slidesPerView: 2,
+            }
+        }
     });
 
     var order = new Swiper('.order-list', {
@@ -44,4 +77,24 @@ $(document).ready(function(){
             disableOnInteraction: true,
         },
     });
+
+    var youtube = new Swiper('.youtube', {
+        slidesPerView: 2,
+        spaceBetween: 0,
+        loop: true,
+        centeredSlides: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: true,
+        },
+    });
+
+    var yta = $('.youtube a');
+    var ytw = yta.width();
+    //console.log(ytw);
+    var yth = ((ytw / 16) * 9);
+    //console.log(yth);
+    yta.height(yth);
+
+    $("a.yt_play").YouTubePopUp({autoplay:0});
 });
