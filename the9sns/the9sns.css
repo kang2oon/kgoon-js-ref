@@ -115,8 +115,12 @@ nav.fixed{position:fixed;top:0;width:100%;}
 .order_list_wrap .order-list .swiper-slide .qty{color:#666;font-size:14px;margin-top:8px;}
 
 .youtube_wrap{line-height:0;overflow:hidden;}
-.youtube_wrap .youtube a{display:inline-block;overflow:hidden;}
+.youtube_wrap .youtube a{display:inline-block;overflow:hidden;position:relative;}
 .youtube_wrap .youtube a img{position:relative;transform:translateY(-12.5%);}
+.youtube_wrap .youtube a:hover::after, .youtube_wrap .youtube a:focus::after{
+    content:"\f144";position:absolute;top:0;left:0;bottom:0;right:0;background-color:rgba(0,0,0,.5);font-family:"Font Awesome 5 Pro";
+    padding:25% 43.5%;color:rgba(255,255,255,.8);font-size:64px;
+}
 
 input[type="checkbox"]{display:none;}
 input[type="checkbox"]+label{display:inline-block;position:relative;padding-left:24px;}
@@ -148,6 +152,7 @@ input[type="checkbox"]:checked+label::after{
     .order_list_wrap .order-tit .tit{font-size:36px;}
     .order_list_wrap .order-tit .subtit{font-size:20px;}
     .order_list_wrap .order-tit .sns_wrap>div{width:48px;}
+    .youtube_wrap .youtube a:hover::after, .youtube_wrap .youtube a:focus::after{padding:28% 43.5%;font-size:48px;}
 }
 
 @media screen and (max-width : 480px){
@@ -167,4 +172,5 @@ input[type="checkbox"]:checked+label::after{
     .navbar-default .navbar-toggle{border:none;margin-right:0;}
     .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{background-color:transparent;}
     .navbar-brand{padding:0;}
+    .youtube_wrap .youtube a:hover::after, .youtube_wrap .youtube a:focus::after{padding:28% 40%;font-size:32px;}
 }
