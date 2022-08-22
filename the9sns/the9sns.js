@@ -122,7 +122,23 @@ $(document).ready(function(){
             cate8();
         }
     });
+
+    $('.category_wrap ul li a').click(function(){
+        $('.category_wrap ul li a').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    $('.category_wrap .mask span').click(function(){
+        $('.category_wrap ul, .category_wrap .mask').toggleClass('on');
+    });
+
+    $('.aco_wrap .aco.tab').click(function(){
+        var tab = $(this).attr('data-tab');
+        $('.aco_wrap .aco').removeClass('active');
+        $('.aco_wrap .aco[data-tab="'+tab+'"]').addClass('active');
+    });
 });
+
 function cate1() {
   	$("#orderform-category i option").unwrap("");
     $("#orderform-category option[value='10']").wrap("<i></i>");
