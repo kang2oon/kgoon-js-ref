@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title></title>
+    <link href="https://vjs.zencdn.net/8.0.4/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/8.0.4/video.min.js"></script>
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <!-- <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script> -->
+    <link href="https://unpkg.com/@silvermine/videojs-quality-selector/dist/css/quality-selector.css" rel="stylesheet">
+    <script src="https://unpkg.com/@silvermine/videojs-quality-selector/dist/js/silvermine-videojs-quality-selector.min.js"></script>
+    <!--<script src="/videojs/videojs-contrib-quality-levels.min.js"></script>
+    <script src="/videojs/videojs-hls-quality-selector.min.js"></script>-->
+    <style>
+       
+    </style>
+</head>
+<body>
+    <!-- <video id="my-video" class="video-js" controls preload="auto" //width="640" //height="264" poster="MY_VIDEO_POSTER.jpg" data-setup="{}"> -->
+    <!-- <video id="my-player" class="video-js vjs-fluid"> -->
+    <video id="my-player" class="video-js vjs-default-skin vjs-icon-hd">
+        <!-- <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4" label="720P" selected="true"/>
+        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4" label="480P" />
+        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" label="360P" />
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p> -->
+    </video>
+    <div style="margin-top: 20px;">
+        <button id="audio-only-btn" style="margin-right: 10px;">오디오만 재생</button>
+    </div>
+    
+    <div style="margin-top: 30px;">
+        <p>재생속도: <span id="playback-speed">1</span></p>
+        <div style="display: flex;">
+            <button id="speed-0.25-btn" style="margin-right: 10px;">0.25</button>
+            <button id="speed-0.5-btn" style="margin-right: 10px;">0.5</button>
+            <button id="speed-0.75-btn" style="margin-right: 10px;">0.75</button>
+            <button id="speed-normal-btn" style="margin-right: 10px;">1(기본)</button>
+            <button id="speed-1.25-btn" style="margin-right: 10px;">1.25</button>
+            <button id="speed-1.5-btn" style="margin-right: 10px;">1.5</button>
+            <button id="speed-1.75-btn" style="margin-right: 10px;">1.75</button>
+            <button id="speed-2-btn" style="margin-right: 10px;">2</button>
+            <button id="speed-2.5-btn" style="margin-right: 10px;">2.5</button>
+            <button id="speed-3-btn" style="margin-right: 10px;">3</button>
+        </div>
+    </div>
+    <br/>
+    <table>
+        <tbody>
+        <tr>
+            <th>영상 시간</th>
+            <td><span id="duration"></span></td>
+        </tr>
+        <tr>
+            <th>영상 사이즈</th>
+            <td><span id="width_height"></span></td>
+        </tr>
+        
+        </tbody>
+    </table>
+
+    <script>
+        //var videojs = require('videojs');
+        //require('@silvermine/videojs-quality-selector')(videojs);
+        //require('videojs-hls-quality-selector');
+
+        const video = document.getElementById('my-player');
+
+        video.addEventListener('play', (event) => {
+            console.log('play');
+        });
+        video.addEventListener('pause', (event) => {
+            console.log('pause');
+        });
+        video.addEventListener('ended', (event) => {
+            console.log('ended');
+        });
+        
+        const options = {
+            sources: [
+                //{src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", type: "video/mp4", label: '720P', selected: true},
+                //{src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4", type: "video/mp4", label: '480P'},
+                //{src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", type: "video/mp4", label: '360P'}
+                {src: "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.720p.webm", type: "video/mp4", label: '720P'},
+                {src: "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.480p.webm", type: "video/mp4", label: '480P', selected: true},
+                {src: "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.360p.webm", type: "video/mp4", label: '360P'}
+            ],
+            controls: true,
+            autoplay: false,
+            preload: 'auto',
+            loop: false,
+            poster: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg',
+            // plugins: {
+            //     eventTracking: true
+            // }
+            //liveul: true,
+            playbackRates: [0.5, 1, 1.5, 2, 2.5, 3],
+            //captions: true,
+            // children: {
+            //     controlBar:{
+            //         fullscreenToggle: false
+            //     }
+            // }
+            //controlBar:['playToggle', 'volumePanel', 'currentTimeDisplay', 'timeDivider', 'durationDisplay', 'progressControl', 'liveDisplay', 'remainingTimeDisplay', 'customControlSpacer', 'playbackRateMenuButton', 'chaptersButton', 'descriptionsButton', 'subsCapsButton', 'audioTrackButton', 'fullscreenToggle']
+            controlBar:{
+                //pictureInPictureToggle: false,
+                qualitySelector: true,
+            }
+        }
+
+        //var player = videojs(document.querySelector('.video-js'),{
+        //const player = videojs('my-player', options, function(){
+        //    player.controlBar.addChild('QualitySelector');
+        //});
+        const player = videojs('my-player', options);
+
+        // player.src([
+        //     {
+        //         src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+        //         type: 'video/mp4',
+        //         label: '720P',
+        //         //selected: true,
+        //     },
+        //     {
+        //         src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+        //         type: 'video/mp4',
+        //         label: '480P',
+        //         //selected: true,
+        //     },
+        //     {
+        //         src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+        //         type: 'video/mp4',
+        //         label: '360P',
+        //         selected: true,
+        //     },
+        // ]);
+
+        //player.hlsQualitySelector({
+        //    displayCurrentQuality: true,
+        //});
+
+
+        player.on('loadedmetadata', function() {
+            //this.addClass('smile007t');
+            const pos = 0;
+            if (pos) {
+                player.currentTime(pos);
+            }
+            const vduration = player.duration();
+            let vcurrenttime = player.currentTime();
+            console.log(pos +' / '+ vduration +' / '+ vcurrenttime);
+            const vwidth = player.videoWidth();
+            const vheight = player.videoHeight();
+            console.log('w : ' +vwidth+ ' / h : ' +vheight);
+            const duration_text = document.getElementById('duration');
+            duration_text.innerText = vduration+'초';
+            const width_height = document.getElementById('width_height');
+            width_height.innerText = vwidth+' * '+vheight;
+        });
+
+
+        const audioOnlyBtn = document.getElementById("audio-only-btn");
+        audioOnlyBtn.addEventListener('click', function handleClick() {
+            console.log('audio-only-btn-click');
+            console.log('player.audioOnlyMode(): ' + player.audioOnlyMode());
+
+        	// 오디오만 재생 모드가 true 일 경우
+            if (player.audioOnlyMode()) {
+                player.audioOnlyMode(false); // 오디오만 재생 모드를 false 로 바꾸고
+                audioOnlyBtn.textContent = '오디오만 재생'; // 버튼 이름 변경
+            } else {
+                player.audioOnlyMode(true); // 오디오만 재생 모드를 true 로 바꾸고
+                audioOnlyBtn.textContent = '비디오도 재생'; // 버튼 이름 변경
+            }
+
+        });
+
+        // 재생속도를 표시하는 <span> 요소
+        const speed = document.getElementById('playback-speed');
+
+        // 재생속도를 0.25로 바꾸는 버튼
+        const speedBtn1 = document.getElementById("speed-0.25-btn");
+        speedBtn1.addEventListener('click', function handleClick() { // 버튼에 클릭 리스너 달기
+            console.log('speed-0.25-btn-click');
+            video.playbackRate = 0.25; // 영상의 재생속도 변경
+            speed.innerHTML = '0.25'; // 재생속도 html에 표시
+        });
+
+        // 재생속도를 0.5로 바꾸는 버튼
+        const speedBtn2 = document.getElementById("speed-0.5-btn");
+        speedBtn2.addEventListener('click', function handleClick() {
+            console.log('speed-0.5-btn-click');
+            video.playbackRate = 0.5;
+            speed.innerHTML = '0.5';
+        });
+
+        // 재생속도를 0.75로 바꾸는 버튼
+        const speedBtn3 = document.getElementById("speed-0.75-btn");
+        speedBtn3.addEventListener('click', function handleClick() {
+            console.log('speed-0.75-btn-click');
+            video.playbackRate = 0.75;
+            speed.innerHTML = '0.75';
+        });
+
+        // 재생속도를 기본(1)으로 설정하는 버튼
+        const speedBtn4 = document.getElementById("speed-normal-btn");
+        speedBtn4.addEventListener('click', function handleClick() {
+            console.log('speed-normal-btn-click');
+            video.playbackRate = 1;
+            speed.innerHTML = '1';
+        });
+
+        // 재생속도를 1.25로 바꾸는 버튼
+        const speedBtn5 = document.getElementById("speed-1.25-btn");
+        speedBtn5.addEventListener('click', function handleClick() {
+            console.log('speed-1.25-btn-click');
+            video.playbackRate = 1.25;
+            speed.innerHTML = '1.25';
+        });
+
+        // 재생속도를 1.5로 바꾸는 버튼
+        const speedBtn6 = document.getElementById("speed-1.5-btn");
+        speedBtn6.addEventListener('click', function handleClick() {
+            console.log('speed-1.5-btn-click');
+            video.playbackRate = 1.5;
+            speed.innerHTML = '1.5';
+        });
+
+        // 재생속도를 1.75로 바꾸는 버튼
+        const speedBtn7 = document.getElementById("speed-1.75-btn");
+        speedBtn7.addEventListener('click', function handleClick() {
+            console.log('speed-1.75-btn-click');
+            video.playbackRate = 1.75;
+            speed.innerHTML = '1.75';
+        });
+
+        // 재생속도를 2로 바꾸는 버튼
+        const speedBtn8 = document.getElementById("speed-2-btn");
+        speedBtn8.addEventListener('click', function handleClick() {
+            console.log('speed-2-btn-click');
+            video.playbackRate = 2;
+            speed.innerHTML = '2';
+        });
+
+        // 재생속도를 2.5로 바꾸는 버튼
+        const speedBtn9 = document.getElementById("speed-2.5-btn");
+        speedBtn9.addEventListener('click', function handleClick() {
+            console.log('speed-2.5-btn-click');
+            video.playbackRate = 2.5;
+            speed.innerHTML = '2.5';
+        });
+
+        // 재생속도를 3로 바꾸는 버튼
+        const speedBtn10 = document.getElementById("speed-3-btn");
+        speedBtn10.addEventListener('click', function handleClick() {
+            console.log('speed-3-btn-click');
+            video.playbackRate = 3;
+            speed.innerHTML = '3';
+        });
+
+
+        //videojs('my-player');
+        //var myPlayer = videojs('example_video_1');
+        // var vid = videojs('my-video');
+        // var crtime = vid.currentTime();
+        // var lengthOfVideo = vid.duration();
+        // var vwidth = player.videoWidth();
+        // var vheight = player.videoHeight();
+        // console.log('w : ' +vwidth+ ' / h : ' +vheight);
+    </script>
+</body>
+</html>
