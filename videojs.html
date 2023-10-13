@@ -47,12 +47,39 @@
             <button id="speed-3-btn" style="margin-right: 10px;">3</button>
         </div>
     </div>
+    <div style="margin-top: 30px;">
+        <p>볼륨: <span id="playback-volume">100%</span></p>
+        <div style="display: flex;">
+            <button id="volume-0.1-btn" style="margin-right: 10px;">10%</button>
+            <button id="volume-0.2-btn" style="margin-right: 10px;">20%</button>
+            <button id="volume-0.3-btn" style="margin-right: 10px;">30%</button>
+            <button id="volume-0.4-btn" style="margin-right: 10px;">40%</button>
+            <button id="volume-0.5-btn" style="margin-right: 10px;">50%</button>
+            <button id="volume-0.6-btn" style="margin-right: 10px;">60%</button>
+            <button id="volume-0.7-btn" style="margin-right: 10px;">70%</button>
+            <button id="volume-0.8-btn" style="margin-right: 10px;">80%</button>
+            <button id="volume-0.9-btn" style="margin-right: 10px;">90%</button>
+            <button id="volume-1-btn" style="margin-right: 10px;">100%</button>
+        </div>
+    </div>
     <br/>
     <table>
         <tbody>
         <tr>
             <th>영상 시간</th>
             <td><span id="duration"></span></td>
+        </tr>
+        <tr>
+            <th>재생 시간</th>
+            <td><span id="current"></span></td>
+        </tr>
+        <tr>
+            <th>남은 시간</th>
+            <td><span id="remain"></span></td>
+        </tr>
+        <tr>
+            <th>재생 구간</th>
+            <td><span id="played"></span></td>
         </tr>
         <tr>
             <th>영상 사이즈</th>
@@ -150,16 +177,31 @@
                 player.currentTime(pos);
             }
             const vduration = player.duration();
-            let vcurrenttime = player.currentTime();
+            const vcurrenttime = player.currentTime();
             console.log(pos +' / '+ vduration +' / '+ vcurrenttime);
             const vwidth = player.videoWidth();
             const vheight = player.videoHeight();
             console.log('w : ' +vwidth+ ' / h : ' +vheight);
             const duration_text = document.getElementById('duration');
+            const current_text = document.getElementById('current');
             duration_text.innerText = vduration+'초';
+            current_text.innerText = vcurrenttime+'초';
             const width_height = document.getElementById('width_height');
             width_height.innerText = vwidth+' * '+vheight;
         });
+
+        video.addEventListener('timeupdate', function() {
+            // console.log('Event callback: ' + player.currentTime());
+            document.getElementById('current').innerText = player.currentTime()+'초 ';
+            document.getElementById('remain').innerText = player.remainingTime()+'초';
+            // var bufferedTimeRange = player.buffered();
+            // var numberOfRanges = bufferedTimeRange.length;
+            // var firstRangeStart = bufferedTimeRange.start(0);
+            // var firstRangeEnd = bufferedTimeRange.end(0);
+            // var firstRangeLength = firstRangeEnd - firstRangeStart;
+            // document.getElementById('played').innerText = "["+firstRangeStart+","+firstRangeEnd+"]";
+        });
+
 
 
         const audioOnlyBtn = document.getElementById("audio-only-btn");
@@ -259,6 +301,61 @@
             console.log('speed-3-btn-click');
             video.playbackRate = 3;
             speed.innerHTML = '3';
+        });
+
+        // 재생속도를 표시하는 <span> 요소
+        const volume = document.getElementById('playback-volume');
+
+        const volumeBtn1 = document.getElementById("volume-0.1-btn");
+        const volumeBtn2 = document.getElementById("volume-0.2-btn");
+        const volumeBtn3 = document.getElementById("volume-0.3-btn");
+        const volumeBtn4 = document.getElementById("volume-0.4-btn");
+        const volumeBtn5 = document.getElementById("volume-0.5-btn");
+        const volumeBtn6 = document.getElementById("volume-0.6-btn");
+        const volumeBtn7 = document.getElementById("volume-0.7-btn");
+        const volumeBtn8 = document.getElementById("volume-0.8-btn");
+        const volumeBtn9 = document.getElementById("volume-0.9-btn");
+        const volumeBtn10 = document.getElementById("volume-1-btn");
+
+        volumeBtn1.addEventListener('click', function handleClick() {
+            video.volume = 0.1;
+            volume.innerHTML = '10%';
+        });
+        volumeBtn2.addEventListener('click', function handleClick() {
+            video.volume = 0.2;
+            volume.innerHTML = '20%';
+        });
+        volumeBtn3.addEventListener('click', function handleClick() {
+            video.volume = 0.3;
+            volume.innerHTML = '30%';
+        });
+        volumeBtn4.addEventListener('click', function handleClick() {
+            video.volume = 0.4;
+            volume.innerHTML = '40%';
+        });
+        volumeBtn5.addEventListener('click', function handleClick() {
+            video.volume = 0.5;
+            volume.innerHTML = '50%';
+        });
+        volumeBtn6.addEventListener('click', function handleClick() {
+            video.volume = 0.6;
+            volume.innerHTML = '60%';
+        });
+        volumeBtn7.addEventListener('click', function handleClick() {
+            video.volume = 0.7;
+            volume.innerHTML = '70%';
+        });
+        volumeBtn8.addEventListener('click', function handleClick() {
+            video.volume = 0.8;
+            volume.innerHTML = '80%';
+        });
+        volumeBtn9.addEventListener('click', function handleClick() {
+            video.volume = 0.9;
+            volume.innerHTML = '90%';
+        });
+        volumeBtn10.addEventListener('click', function handleClick() {
+            video.volume = 1;
+            volume.innerHTML = '100%';
         });
 
 

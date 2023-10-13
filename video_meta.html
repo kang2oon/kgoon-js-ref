@@ -4,10 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title></title>
+    <style>
+        .thumb{width:480px;}
+        .thumb img{max-width:100%;}
+    </style>
 </head>
 <body>
     <input type="file" id="fileInput">
-    <div></div><br><div></div>
+    <div></div><br><div class="thumb"></div>
 
     <script>
         var fileEl = document.querySelector("input");

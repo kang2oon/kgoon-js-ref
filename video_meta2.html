@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body>
+    <input type="file" id="file" accept="video/mp4" />
+    <video id="video" controls style="display:none;"></video>
+    <div id="info"></div>
+    <canvas id="thumb_canvas" style="max-width:640px;"></canvas>
+    <script>
+    const _VIDEO = document.querySelector("#video"),
+        _INFO = document.querySelector("#info"),
+        _CANVAS = document.querySelector("#thumb_canvas"),
+        _CANVAS_CTX = _CANVAS.getContext("2d");
+    document.querySelector("#file").addEventListener('change', function() {
+        document.querySelector("#video").setAttribute('src', URL.createObjectURL(document.querySelector("#file").files[0])); //비디오를 첨부(추가)하면 첨부된 파일을 비디오 태그에 삽입한다
+    });
+    _VIDEO.addEventListener('loadedmetadata', function() { //비디오 태그의 메타데이터가 들어오면
+        _CANVAS.width = _VIDEO.videoWidth;
+        _CANVAS.height = _VIDEO.videoHeight;
+        console.log(_VIDEO.videoWidth, _VIDEO.videoHeight);
+        console.log(_VIDEO.duration, _VIDEO.currentTime);
+        _INFO.innerHTML= "Duration: " + _VIDEO.duration + "s" + " <br>Width: " + _VIDEO.videoWidth + " <br>Height: " + _VIDEO.videoHeight + "<br>";
+        const time = Math.random() * _VIDEO.duration; //비디오의 영상길이 중 랜덤 타임을 뽑음
+        console.log(time);
+        _VIDEO.currentTime = time; //해당 시간으로 이동
+        setTimeout(()=>{ //바로 출력하면 비디오가 불러오기 전이라 동작이 안됨. 잠깐의 기다림 후 캔버스에 해당 이미지를 그림.
+        _CANVAS_CTX.drawImage(_VIDEO, 0, 0, _VIDEO.videoWidth, _VIDEO.videoHeight);
+        },100)
+    });
+    </script>
+</body>
+</html>
