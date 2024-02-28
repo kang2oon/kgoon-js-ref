@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html data-dark="false">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>퍼블리싱</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+	<link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+<body>
+<div class="container">
+	<h1>
+		퍼블리싱 목록
+		<div class="git mode">
+            <input type="checkbox" id="toggle"/>
+	        <label for="toggle"></label>
+        </div>
+	</h1>
+	<table class="tbl_list">
+	<thead>
+	<tr>
+		<th>NO</th>
+		<th>
+			<select>
+				<option value="all">구분</option>
+				<option value="xml">XML</option>
+				<option value="json">JSON</option>
+			</select>
+		</th>
+		<th>페이지명</th>
+	</tr>
+	</thead>
+        <tbody>
+			<tr class="xml">
+				<td></td>
+				<td>XML</td>
+				<td><a href="/tutorial/xmlparsing/common.html" class="preview" target="_blank">고용24 공통코드 API - 지역</a></td>
+			</tr>
+			<tr class="xml">
+				<td></td>
+				<td>XML</td>
+				<td><a href="/tutorial/xmlparsing/hrdnet.html" class="preview" target="_blank">고용24 HRD-NET API - 경기</a></td>
+			</tr>
+			<tr class="json">
+				<td></td>
+				<td>JSON</td>
+				<td><a href="/location/" class="preview" target="_blank">연합뉴스 - 고용관련 뉴스</a></td>
+			</tr>
+        </tbody>
+	</table>
+</div>
+
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" ></script>
+<script>
+	$(document).ready(function(){
+		$('.tbl_list tbody tr').each(function(){
+			var idx = $(this).index();
+			$(this).find('td:first-child').append(idx + 1);
+		});
+
+		$('.tbl_list thead select').change(function(){
+			var cate = $(this).val();
+			console.log(cate);
+			if(cate == 'all'){
+				$('.tbl_list tbody tr').show();
+			} else {
+				$('.tbl_list tbody tr').hide();
+				$('.tbl_list tbody tr.'+cate).show();
+			}
+		});
+
+		// $('.mode .toggle').click(function(){
+		// 	$('html').attr('data-dark',$('html').attr('data-dark') == 'true' ? 'fales' : 'true');
+		// });
+
+        $('.mode').click(function(){
+            if($('.mode input[type="checkbox"]').is(":checked") == true){
+                $('html').attr('data-dark','true');
+            }else{
+                $('html').attr('data-dark','false');
+            }
+        });
+	});
+</script>
+</body>
+</html>

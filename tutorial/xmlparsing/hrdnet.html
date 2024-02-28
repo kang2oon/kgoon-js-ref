@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>XML Parsing</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+	<link rel="stylesheet" type="text/css" href="/tutorial/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/tutorial/css/xmlparsing.css" />
+</head>
+<body>
+<div class="container">
+    <div><span class="total"></span>개 과정</div>
+	<table id="region">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>교육코드</th>
+            <th>지역</th>
+            <th>과정명</th>
+            <th>훈련대상</th>
+            <th>교육기관</th>
+            <th>교육기관 연락처</th>
+            <th>교육시작일</th>
+            <th>교육종료일</th>
+            <th>훈련비</th>
+            <th>정원</th>
+            <th>콘텐츠</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" ></script>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+            url: 'https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do?authKey=841bd167-8fb0-4f38-b839-29b40708e3f2&returnType=XML&outType=1&pageNum=1&pageSize=100&srchTraStDt=20240101&srchTraEndDt='+Date.now()+'&sort=ASC&sortCol=TOT_FXNUM&srchTraArea1=41',
+            type: 'GET',
+            dataType: 'xml',
+            error: function(){
+                alert('Error loading XML document');
+            },
+            success: function(xml){
+                var cnt = $(xml).find("scn_cnt").text();
+                var total = cnt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                $('.total').append(total);
+                $(xml).find("scn_list").each(function(num){
+                    var id = $(this).find("trprId").text();
+                    var local = $(this).find("address").text();
+                    var subject = $(this).find("title").text();
+                    var link = $(this).find("titleLink").text();
+                    var target = $(this).find("trainTarget").text();
+                    var company = $(this).find("subTitle").text();
+                    var clink = $(this).find("subTitleLink").text();
+                    var tel = $(this).find("telNo").text();
+                    var sdate = $(this).find("traStartDate").text();
+                    var edate = $(this).find("traEndDate").text();
+                    var pay = $(this).find("realMan").text().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                    var yard = $(this).find("yardMan").text();
+                    var contents = $(this).find("contents").text();
+
+                    var sprint  = "<tr><td>" +num+ "</td>";
+                        sprint += "<td>" +id+ "</td>";
+                        sprint += "<td>" +local+ "</td>";
+                        sprint += "<td><a href='"+link+"' target='_blank'>"+subject+ "</a></td>";
+                        sprint += "<td>" +target+ "</td>";
+                        sprint += "<td><a href='"+clink+"' target='_blank'>"+company+ "</a></td>";
+                        sprint += "<td>" +tel+ "</td>";
+                        sprint += "<td>" +sdate+ "</td>";
+                        sprint += "<td>" +edate+ "</td>";
+                        sprint += "<td>" +pay+ "</td>";
+                        sprint += "<td>" +yard+ "</td>";
+                        sprint += "<td>" +contents+ "</td>";
+                        sprint += "</tr>";
+                    $('#region > tbody').append(sprint);
+                });
+            }
+        });
+	});
+</script>
+</body>
+</html>

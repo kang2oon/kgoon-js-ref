@@ -30,6 +30,7 @@
     </video>
     <div style="margin-top: 20px;">
         <button id="audio-only-btn" style="margin-right: 10px;">오디오만 재생</button>
+        <button id="play3m-btn" style="margin-right: 10px;">3분 위치부터 재생</button>
     </div>
     
     <div style="margin-top: 30px;">
@@ -85,7 +86,6 @@
             <th>영상 사이즈</th>
             <td><span id="width_height"></span></td>
         </tr>
-        
         </tbody>
     </table>
 
@@ -108,12 +108,12 @@
         
         const options = {
             sources: [
-                //{src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", type: "video/mp4", label: '720P', selected: true},
-                //{src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4", type: "video/mp4", label: '480P'},
-                //{src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", type: "video/mp4", label: '360P'}
-                {src: "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.720p.webm", type: "video/mp4", label: '720P'},
-                {src: "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.480p.webm", type: "video/mp4", label: '480P', selected: true},
-                {src: "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.360p.webm", type: "video/mp4", label: '360P'}
+                {src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", type: "video/mp4", label: '720P', selected: true},
+                {src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4", type: "video/mp4", label: '480P'},
+                {src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", type: "video/mp4", label: '360P'}
+                // {src: "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.720p.webm", type: "video/mp4", label: '720P'},
+                // {src: "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.480p.webm", type: "video/mp4", label: '480P', selected: true},
+                // {src: "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.360p.webm", type: "video/mp4", label: '360P'}
             ],
             controls: true,
             autoplay: false,
@@ -218,6 +218,11 @@
                 audioOnlyBtn.textContent = '비디오도 재생'; // 버튼 이름 변경
             }
 
+        });
+
+        const play3mBtn = document.getElementById("play3m-btn");
+        play3mBtn.addEventListener('click', function(){
+            player.currentTime(180);
         });
 
         // 재생속도를 표시하는 <span> 요소

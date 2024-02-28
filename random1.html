@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opacity Animation</title>
+    <style>
+        html, body{margin:0;padding:0;}
+        .mv_bg{position:relative;height:1000px;background-color: #222226;overflow:hidden;}
+        .mv_bg ul{font-size:0;list-style:none;padding:0;display:flex;flex-wrap:wrap;width:120%;margin-left:-100px;animation:fadeout 1s linear 5s;animation-fill-mode:forwards;}
+        .mv_bg ul::after{content:'';display:block;clear:both;}
+        @keyframes fadeout{
+            0%{opacity:1;}
+            100%{opacity:0.1;}
+        }
+        .mv_bg ul li{width:215px;height:290px;transition: opacity 1s ease-in-out;}
+        .mv_bg ul li img{width:100%;height:100%;}
+    </style>
+</head>
+<body>
+    <div class="mv_bg">
+        <ul id="listContainer">
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_1pgce_2020_06_25_20_15_20.jpg" alt=""></li>
+            <li data-start-time="1000"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_bntmL_2020_06_25_20_35_55.jpg" alt=""></li>
+            <li data-start-time="3000"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_1ntA9_2020_06_25_20_32_49.jpg" alt=""></li>
+            <li data-start-time="1500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_XSCSL_2020_06_25_20_14_55.jpg" alt=""></li>
+            <li data-start-time="300"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_wHAjS_2020_06_25_20_19_10.jpg" alt=""></li>
+            <li data-start-time="0"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_altmg_2020_06_25_20_32_06.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_P23bw_2020_06_25_20_27_56.jpg" alt=""></li>
+            <li data-start-time="400"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_sNLEE_2020_06_25_20_32_36.jpg" alt=""></li>
+            <li data-start-time="700"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_JSxC1_2020_06_25_20_35_22.jpg" alt=""></li>
+            <li data-start-time="800"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_D6MT5_2020_06_25_20_31_30.jpg" alt=""></li>
+            <li data-start-time="200"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_5BD7v_2020_06_25_20_30_36.jpg" alt=""></li>
+            <li data-start-time="550"><img src="https://www.anaden.co.kr/upload/banner_01/2020_07_20/admin_QeM8m_2020_07_20_17_32_25.jpg" alt=""></li>
+            <li data-start-time="300"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_o2ijq_2020_06_25_20_16_54.jpg" alt=""></li>
+            <li data-start-time="0"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_sM63k_2020_06_25_20_15_31.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_ohXE2_2020_06_25_20_32_20.jpg" alt=""></li>
+            <li data-start-time="1000"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_VgxLN_2020_06_25_20_30_51.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_j3WVB_2020_06_25_20_30_24.jpg" alt=""></li>
+            <li data-start-time="300"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_XDw4v_2020_06_25_20_33_25.jpg" alt=""></li>
+            <li data-start-time="700"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_iwS2C_2020_06_25_20_34_37.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_OxCgQ_2020_06_25_20_29_10.jpg" alt=""></li>
+            <li data-start-time="1500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_sKvsC_2020_06_25_20_35_01.jpg" alt=""></li>
+            <li data-start-time="300"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_zjoS5_2020_06_25_20_18_06.jpg" alt=""></li>
+            <li data-start-time="600"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_GmI4y_2020_06_25_20_31_41.jpg" alt=""></li>
+            <li data-start-time="3000"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_iDKyT_2020_06_25_20_17_11.jpg" alt=""></li>
+            <li data-start-time="0"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_CkJD1_2020_06_25_20_28_54.jpg" alt=""></li>
+            <li data-start-time="300"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_YrKsC_2020_06_25_20_30_12.jpg" alt=""></li>
+            <li data-start-time="200"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_4IruD_2020_06_25_20_31_52.jpg" alt=""></li>
+            <li data-start-time="800"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_m4ZRV_2020_06_25_20_18_45.jpg" alt=""></li>
+            <li data-start-time="2500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_9wOKh_2020_06_25_20_27_04.jpg" alt=""></li>
+            <li data-start-time="50"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_zk61e_2020_06_25_20_35_34.jpg" alt=""></li>
+            <li data-start-time="200"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_5EQ5C_2020_06_25_20_17_45.jpg" alt=""></li>
+            <li data-start-time="100"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_LUrJ8_2020_06_25_20_36_06.jpg" alt=""></li>
+            <li data-start-time="400"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_IZfOb_2020_06_25_20_31_19.jpg" alt=""></li>
+            <li data-start-time="3000"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_Fajob_2020_06_25_20_18_23.jpg" alt=""></li>
+            <li data-start-time="100"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_ghMfs_2020_06_25_20_28_08.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_YtVoH_2020_06_25_20_15_43.jpg" alt=""></li>
+            <li data-start-time="300"><img src="https://www.anaden.co.kr/upload/banner_01/2020_07_20/admin_NDsBX_2020_07_20_17_32_35.jpg" alt=""></li>
+            <li data-start-time="0"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_tBljW_2020_06_25_20_28_22.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_QGWNA_2020_06_25_20_15_09.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_itV7z_2020_06_25_20_34_51.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_vzHhH_2020_06_25_20_33_00.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_zMI4g_2020_06_25_20_34_26.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_FyjJL_2020_06_25_20_27_21.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_slUuS_2020_06_25_20_33_37.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_Jv9gn_2020_06_25_20_17_57.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_mO81F_2020_06_25_20_18_33.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_ccKUT_2020_06_25_20_19_24.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_yRNqx_2020_06_25_20_35_12.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_2CxKn_2020_06_25_20_18_56.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_eQX7V_2020_06_25_20_35_45.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_RL7fW_2020_06_25_20_31_07.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_eoTN6_2020_06_25_20_19_41.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_P23bw_2020_06_25_20_27_56.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_D6MT5_2020_06_25_20_31_30.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_OxCgQ_2020_06_25_20_29_10.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_YrKsC_2020_06_25_20_30_12.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_sNLEE_2020_06_25_20_32_36.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_iDKyT_2020_06_25_20_17_11.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_07_20/admin_QeM8m_2020_07_20_17_32_25.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_m4ZRV_2020_06_25_20_18_45.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_1pgce_2020_06_25_20_15_20.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_1ntA9_2020_06_25_20_32_49.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_zjoS5_2020_06_25_20_18_06.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_GmI4y_2020_06_25_20_31_41.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_JSxC1_2020_06_25_20_35_22.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_VgxLN_2020_06_25_20_30_51.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_CkJD1_2020_06_25_20_28_54.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_1pgce_2020_06_25_20_15_20.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_iwS2C_2020_06_25_20_34_37.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_bntmL_2020_06_25_20_35_55.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_9wOKh_2020_06_25_20_27_04.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_sM63k_2020_06_25_20_15_31.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_XSCSL_2020_06_25_20_14_55.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_wHAjS_2020_06_25_20_19_10.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_5BD7v_2020_06_25_20_30_36.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_j3WVB_2020_06_25_20_30_24.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_1pgce_2020_06_25_20_15_20.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_4IruD_2020_06_25_20_31_52.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_o2ijq_2020_06_25_20_16_54.jpg" alt=""></li>
+            <li data-start-time="500"><img src="https://www.anaden.co.kr/upload/banner_01/2020_06_25/hero_1pgce_2020_06_25_20_15_20.jpg" alt=""></li>
+        </ul>
+    </div>
+    
+
+    <script>
+        function fadeInWithTiming(elements) {
+            elements.forEach(function (element) {
+                element.style.opacity = 0;
+            });
+            
+            let startTime;
+
+            function animate(time) {
+                if (!startTime) startTime = time;
+
+                elements.forEach(function (element) {
+                    const startDelay = parseInt(element.getAttribute('data-start-time'), 10);
+                    const progress = (time - startTime - startDelay) / 1000; // duration is set to 1000ms
+
+                    if (progress >= 0) {
+                        const elementProgress = Math.min(progress, 1);
+                        element.style.opacity = elementProgress;
+                    }
+                });
+
+                if (elements.some(function(element) {
+                    const startDelay = parseInt(element.getAttribute('data-start-time'), 10);
+                    return time - startTime - startDelay < 1000; // duration is set to 1000ms
+                })) {
+                    requestAnimationFrame(animate);
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        const listItems = Array.from(document.querySelectorAll('#listContainer li'));
+        fadeInWithTiming(listItems);
+
+    </script>
+</body>
+</html>

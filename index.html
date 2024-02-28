@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html data-dark="false">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>퍼블리싱</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div class="container">
+	<h1>
+		퍼블리싱 목록
+		<div class="git mode">
+            <input type="checkbox" id="toggle"/>
+	        <label for="toggle"></label>
+        </div>
+		<!-- <div class="git"><a href="https://github.com/chaebonggi/jobaba2024" target="_blank">GitHub 페이지 바로가기</a></div> -->
+	</h1>
+	<table class="tbl_list">
+	<thead>
+	<tr>
+		<th>NO</th>
+		<th>
+			<select>
+				<option value="all">구분</option>
+				<option value="html">HTML</option>
+				<option value="css">CSS</option>
+				<option value="js">JS</option>
+				<option value="etc">기타</option>
+			</select>
+		</th>
+		<th>페이지명</th>
+	</tr>
+	</thead>
+        <tbody>
+			<tr class="html">
+				<td></td>
+				<td>HTML</td>
+				<td><a href="/tutorial/" class="preview" target="_blank">데이터 파싱(XML,JSON)</a></td>
+			</tr>
+			<tr class="js">
+				<td></td>
+				<td>JS</td>
+				<td><a href="/videojs.html" class="preview" target="_blank">VideoJS Test</a></td>
+			</tr>
+			<tr class="js">
+				<td></td>
+				<td>JS</td>
+				<td><a href="/video_meta2.html" class="preview" target="_blank">Video Meta 정보 추출 - 썸네일, 재생시간, 영상 사이즈</a></td>
+			</tr>
+			<tr class="js">
+				<td></td>
+				<td>JS</td>
+				<td><a href="/random1.html" class="preview" target="_blank">이미지 랜덤 출력</a></td>
+			</tr>
+        </tbody>
+	</table>
+</div>
+
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" ></script>
+<script>
+	$(document).ready(function(){
+		$('.tbl_list tbody tr').each(function(){
+			var idx = $(this).index();
+			$(this).find('td:first-child').append(idx + 1);
+		});
+
+		$('.tbl_list thead select').change(function(){
+			var cate = $(this).val();
+			console.log(cate);
+			if(cate == 'all'){
+				$('.tbl_list tbody tr').show();
+			} else {
+				$('.tbl_list tbody tr').hide();
+				$('.tbl_list tbody tr.'+cate).show();
+			}
+		});
+
+		// $('.mode .toggle').click(function(){
+		// 	$('html').attr('data-dark',$('html').attr('data-dark') == 'true' ? 'fales' : 'true');
+		// });
+
+        $('.mode').click(function(){
+            if($('.mode input[type="checkbox"]').is(":checked") == true){
+                $('html').attr('data-dark','true');
+            }else{
+                $('html').attr('data-dark','false');
+            }
+        });
+	});
+</script>
+</body>
+</html>
