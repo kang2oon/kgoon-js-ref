@@ -1,0 +1,38 @@
+*{font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;box-sizing:border-box;}
+
+html,body{position:relative;width:100%;height:100%;margin:0;padding:0;color:#232323;color:var(--color_base);}
+ul,ol,li{list-style:none;margin:0;padding:0;}
+
+:root{
+    --background:#f8f8ff;
+    --table-background:#fcfcfd;
+    --primary:#272727;
+    --gray:#a8a7b1;
+    --odd-row:#f6f9ff;
+    --th-background:#f4f5fc;
+    --gray-background:#edeef1;
+    --gray-mid:#f1f2f6;
+}
+
+.container{position:relative;margin:40px;}
+.caption-container{
+    display:flex;width:100%;align-items:center;
+    font-size:1.12rem;font-weight:700;text-align:left;padding-bottom:16px;border-bottom: 2px solid var(--gray-background);
+}
+.table-widget{
+    border-radius:16px;background-color:var(--table-background);padding:24px;margin:16px auto;width:100%;max-width:760px;border:2px solid var(--gray-background);
+    box-shadow:0 4px 16px 0 rgba(148,156,169,.15);text-align:left;min-height:80px;
+}
+.table-wrapper{overflow-x:auto;overflow-y:auto;padding-bottom:8px;}
+.table-widget table{max-width:600px;border-collapse:collapse;table-layout:fixed;}
+.table-widget thead{position:sticky;}
+.table-widget th{padding:12px;font-size:0.875rem;color:var(--gray);width:fit-content;white-space:nowrap;background-color:var(--th-background);}
+.table-widget td{padding:12px;vertical-align:middle;white-space:nowrap;border-bottom:2px solid var(--gray-background);}
+/*.table-widget tbody tr:nth-child(even){background-color:var(--odd-row);}*/
+.sticky-left{position:sticky;z-index:1;top:0;left:0;background-color:var(--table-background);}
+.sticky-right{position:sticky;z-index:1;top:0;right:0;background-color:var(--table-background);}
+.table-title{display:flex;gap:12px;}
+.table-wrapper::-webkit-scrollbar{height:8px;}
+.table-wrapper::-webkit-scrollbar-track{background:var(--gray-mid);border-radius:4px;}
+.table-wrapper::-webkit-scrollbar-thumb{background:var(--gray);border-radius:4px;}
+
