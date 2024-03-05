@@ -10,8 +10,73 @@
 </head>
 <body>
 <div class="container">
-    <div><span class="total"></span>개 과정</div>
-	<table id="region">
+    <div class="search_wrap">
+        <div>
+            <label>AuthKey</label>
+            <input type="text" id="key" placeholder="API KEY 값을 입력하세요." value="841bd167-8fb0-4f38-b839-29b40708e3f2">
+        </div>
+        <div>
+            <label>PageSize</label>
+            <input type="text" id="size" placeholder="페이지당 표시할 수량을 입력하세요.(최대 100개)" value="100">
+        </div>
+        <div>
+            <label>Page</label>
+            <input type="text" id="page" placeholder="출력 페이지 번호를 입력하세요." value="1">
+        </div>
+        <div>
+            <label>Start Date</label>
+            <input type="date" id="sdate" value="2024-01-01">
+        </div>
+        <div>
+            <label>End Date</label>
+            <input type="date" id="edate" value="2024-12-31">
+        </div>
+        <div>
+            <label>Sort1</label>
+            <select id="sort1">
+                <option value="ASC" selected>오름차순(ASC)</option>
+                <option value="DESC">내림차순(DESC)</option>
+            </select>
+        </div>
+        <div>
+            <label>Sort2</label>
+            <select  id="sort2">
+                <option value="TOT_FXNUM">모집인원(TOT_FXNUM)</option>
+                <option value="TRNG_BGDE" selected>훈련시작일(TRNG_BGDE)</option>
+                <option value="TRNG_CRSN">훈련과정명(TRNG_CRSN)</option>
+            </select>
+        </div>
+        <div>
+            <label>Area</label>
+            <select id="area">
+                <option value="11">서울(11)</option>
+                <option value="26">부산(26)</option>
+                <option value="27">대구(27)</option>
+                <option value="28">인천(28)</option>
+                <option value="29">광주(29)</option>
+                <option value="30">대전(30)</option>
+                <option value="31">울산(31)</option>
+                <option value="36">세종(36)</option>
+                <option value="41" selected>경기(41)</option>
+                <option value="43">충북(43)</option>
+                <option value="44">충남(44)</option>
+                <option value="45">전북(45)</option>
+                <option value="46">전남(46)</option>
+                <option value="47">경북(47)</option>
+                <option value="48">경남(48)</option>
+                <option value="50">제주(50)</option>
+                <option value="51">강원(51)</option>
+            </select>
+        </div>
+        <div>
+            <button class="search">검색</button>
+        </div>
+    </div>
+    <div class="page_info">
+        <div>총 <span class="total">0</span>개 과정</div>
+        <div class="totalpage"><span class="current">0</span><span class="last">0</span></div>
+    </div>
+	<table id="region" class="full">
         <thead>
         <tr>
             <th>No</th>
@@ -37,9 +102,67 @@
 	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" ></script>
 <script>
-	$(document).ready(function(){
-		$.ajax({
-            url: 'https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do?authKey=841bd167-8fb0-4f38-b839-29b40708e3f2&returnType=XML&outType=1&pageNum=1&pageSize=100&srchTraStDt=20240101&srchTraEndDt='+Date.now()+'&sort=ASC&sortCol=TRNG_BGDE&srchTraArea1=41',
+	// $(document).ready(function(){
+	// 	$.ajax({
+    //         url: 'https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do?authKey=841bd167-8fb0-4f38-b839-29b40708e3f2&returnType=XML&outType=1&pageNum=1&pageSize=100&srchTraStDt=20240101&srchTraEndDt='+Date.now()+'&sort=ASC&sortCol=TRNG_BGDE&srchTraArea1=41',
+    //         type: 'GET',
+    //         dataType: 'xml',
+    //         error: function(){
+    //             alert('Error loading XML document');
+    //         },
+    //         success: function(xml){
+    //             var cnt = $(xml).find("scn_cnt").text();
+    //             var total = cnt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    //             $('.total').text(total);
+    //             $(xml).find("scn_list").each(function(num){
+    //                 var id = $(this).find("trprId").text();
+    //                 var local = $(this).find("address").text();
+    //                 var subject = $(this).find("title").text();
+    //                 var link = $(this).find("titleLink").text();
+    //                 var target = $(this).find("trainTarget").text();
+    //                 var company = $(this).find("subTitle").text();
+    //                 var clink = $(this).find("subTitleLink").text();
+    //                 var tel = $(this).find("telNo").text();
+    //                 var sdate = $(this).find("traStartDate").text();
+    //                 var edate = $(this).find("traEndDate").text();
+    //                 var pay = $(this).find("realMan").text().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    //                 var yard = $(this).find("yardMan").text().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    //                 var contents = $(this).find("contents").text();
+
+    //                 var sprint  = "<tr><td>" +num+ "</td>";
+    //                     sprint += "<td>" +id+ "</td>";
+    //                     sprint += "<td>" +local+ "</td>";
+    //                     sprint += "<td><a href='"+link+"' target='_blank'>"+subject+ "</a></td>";
+    //                     sprint += "<td>" +target+ "</td>";
+    //                     sprint += "<td><a href='"+clink+"' target='_blank'>"+company+ "</a></td>";
+    //                     sprint += "<td>" +tel+ "</td>";
+    //                     sprint += "<td>" +sdate+ "</td>";
+    //                     sprint += "<td>" +edate+ "</td>";
+    //                     sprint += "<td>" +pay+ "</td>";
+    //                     sprint += "<td>" +yard+ "</td>";
+    //                     sprint += "<td>" +contents+ "</td>";
+    //                     sprint += "</tr>";
+    //                 $('#region > tbody').append(sprint);
+    //             });
+    //         }
+    //     });
+	// });
+
+    $('.search_wrap button').click(function(){
+        var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+        var key = $("#key").val();
+        var size = $("#size").val();
+        var page = $("#page").val();
+        var sdate = $("#sdate").val().replace(/(^\s*)|(\s*$)/gi, '').replace(regExp, '');
+        var edate = $("#edate").val().replace(/(^\s*)|(\s*$)/gi, '').replace(regExp, '');
+        var sort1 = $("#sort1 option:selected").val();
+        var sort2 = $("#sort2 option:selected").val();
+        var area = $("#area option:selected").val();
+        var url = "https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do?authKey="+key+"&returnType=XML&outType=1&pageNum="+page+"&pageSize="+size+"&srchTraStDt="+sdate+"&srchTraEndDt="+edate+"&sort="+sort1+"&sortCol="+sort2+"&srchTraArea1="+area;
+        //console.log(url);
+        $('#region > tbody').empty();
+        $.ajax({
+            url: url,
             type: 'GET',
             dataType: 'xml',
             error: function(){
@@ -48,8 +171,12 @@
             success: function(xml){
                 var cnt = $(xml).find("scn_cnt").text();
                 var total = cnt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-                $('.total').append(total);
+                $('.total').text(total);
+                var lastpage = Math.ceil(cnt/size).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                $('.current').text(page);
+                $('.last').text(lastpage);
                 $(xml).find("scn_list").each(function(num){
+                    var num = num+1;
                     var id = $(this).find("trprId").text();
                     var local = $(this).find("address").text();
                     var subject = $(this).find("title").text();
@@ -61,7 +188,7 @@
                     var sdate = $(this).find("traStartDate").text();
                     var edate = $(this).find("traEndDate").text();
                     var pay = $(this).find("realMan").text().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-                    var yard = $(this).find("yardMan").text();
+                    var yard = $(this).find("yardMan").text().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                     var contents = $(this).find("contents").text();
 
                     var sprint  = "<tr><td>" +num+ "</td>";
@@ -81,7 +208,7 @@
                 });
             }
         });
-	});
+    });
 </script>
 </body>
 </html>
