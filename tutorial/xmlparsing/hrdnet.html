@@ -86,6 +86,7 @@
             <th>훈련대상</th>
             <th>교육기관</th>
             <th>교육기관 연락처</th>
+            <th>교육회차</th>
             <th>교육시작일</th>
             <th>교육종료일</th>
             <th>훈련비</th>
@@ -190,6 +191,7 @@
                     var pay = $(this).find("realMan").text().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                     var yard = $(this).find("yardMan").text().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                     var contents = $(this).find("contents").text();
+                    var degr = $(this).find("trprDegr").text();
 
                     var sprint  = "<tr><td>" +num+ "</td>";
                         sprint += "<td>" +id+ "</td>";
@@ -198,6 +200,7 @@
                         sprint += "<td>" +target+ "</td>";
                         sprint += "<td><a href='"+clink+"' target='_blank'>"+company+ "</a></td>";
                         sprint += "<td>" +tel+ "</td>";
+                        sprint += "<td>" +degr+ "</td>";
                         sprint += "<td>" +sdate+ "</td>";
                         sprint += "<td>" +edate+ "</td>";
                         sprint += "<td>" +pay+ "</td>";
