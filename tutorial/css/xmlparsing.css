@@ -28,6 +28,7 @@ table td:last-child{text-align:left;}
 table td ul{margin:-4px -8px;}
 table td ul li{padding:4px 8px;}
 table td ul li + li{border-top:1px solid var(--color_bordergray);}
+table tbody tr:nth-child(even){background:var(--color_whitegray);}
 .tab_wrap{display:block;width:100%;margin-bottom:8px;overflow:hidden;}
 .ncsCate li{float:left;border:1px solid var(--color_bordergray);padding:8px 16px;border-radius:4px;cursor:pointer;}
 .ncsCate li.active{background:var(--color_gray);color:var(--color_invert);}
