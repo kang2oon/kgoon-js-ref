@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>XML Parsing</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+	<link rel="stylesheet" type="text/css" href="/tutorial/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/tutorial/css/xmlparsing.css" />
+</head>
+<body>
+<div class="container">
+    <div class="tab_wrap">
+        <ul class="ncsCate">
+            <li data-ncs="A" class="active">대분류</li>
+            <li data-ncs="B">중분류</li>
+            <li data-ncs="C">소분류</li>
+            <li data-ncs="D">세분류</li>
+        </ul>
+    </div>
+	<table id="region">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Code</th>
+            <th>NCS 분류명</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" ></script>
+<script>
+	$(document).ready(function(){
+		ncs1();
+	});
+
+    $(".ncsCate li").click(function(){
+        $(".ncsCate li").removeClass("active");
+        $(this).addClass("active");
+        $('#region > tbody').empty();
+        var ncsType = $(this).attr("data-ncs");
+        console.log(ncsType);
+        switch(ncsType){
+            case "A": 
+                ncs1();
+                break;
+            case "B":
+                ncs2();
+                break;
+            case "C": 
+                ncs3();
+                break;
+            case "D":
+                ncs4();
+                break;
+        }
+    });
+
+    function ncs1(){
+        $.ajax({
+            url: 'https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo319L01.do?authKey=c884c23d-f4cf-4a8d-96f2-d84313684f5c&returnType=XML&outType=1&srchType=05',
+            type: 'GET',
+            dataType: 'xml',
+            error: function(){
+                alert('Error loading XML document');
+            },
+            success: function(xml){
+                $(xml).find("scn_list").each(function(num){
+                    num = num+1;
+                    var ncs1_code = $(this).find("rsltCode").text();
+                    var ncs1_name = $(this).find("rsltName").text();
+                    var sprint  = "<tr><td>" +num+ "</td>";
+                        sprint += "<td>" +ncs1_code+ "</td>";
+                        sprint += "<td>" +ncs1_name+ "</td>";
+                        sprint += "</tr>";
+                    $('#region > tbody').append(sprint);
+                });
+            }
+        });
+    }
+
+    function ncs2(){
+        $.ajax({
+            url: 'https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo319L01.do?authKey=c884c23d-f4cf-4a8d-96f2-d84313684f5c&returnType=XML&outType=1&srchType=06',
+            type: 'GET',
+            dataType: 'xml',
+            error: function(){
+                alert('Error loading XML document');
+            },
+            success: function(xml){
+                $(xml).find("scn_list").each(function(num){
+                    num = num+1;
+                    var ncs2_code = $(this).find("rsltCode").text();
+                    var ncs2_name = $(this).find("rsltName").text();
+                    var sprint  = "<tr><td>" +num+ "</td>";
+                        sprint += "<td>" +ncs2_code+ "</td>";
+                        sprint += "<td>" +ncs2_name+ "</td>";
+                        sprint += "</tr>";
+                    $('#region > tbody').append(sprint);
+                });
+            }
+        });
+    }
+
+    function ncs3(){
+        $.ajax({
+            url: 'https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo319L01.do?authKey=c884c23d-f4cf-4a8d-96f2-d84313684f5c&returnType=XML&outType=1&srchType=07',
+            type: 'GET',
+            dataType: 'xml',
+            error: function(){
+                alert('Error loading XML document');
+            },
+            success: function(xml){
+                $(xml).find("scn_list").each(function(num){
+                    num = num+1;
+                    var ncs3_code = $(this).find("rsltCode").text();
+                    var ncs3_name = $(this).find("rsltName").text();
+                    var sprint  = "<tr><td>" +num+ "</td>";
+                        sprint += "<td>" +ncs3_code+ "</td>";
+                        sprint += "<td>" +ncs3_name+ "</td>";
+                        sprint += "</tr>";
+                    $('#region > tbody').append(sprint);
+                });
+            }
+        });
+    }
+
+    function ncs4(){
+        $.ajax({
+            url: 'https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo319L01.do?authKey=c884c23d-f4cf-4a8d-96f2-d84313684f5c&returnType=XML&outType=1&srchType=08',
+            type: 'GET',
+            dataType: 'xml',
+            error: function(){
+                alert('Error loading XML document');
+            },
+            success: function(xml){
+                $(xml).find("scn_list").each(function(num){
+                    num = num+1;
+                    var ncs4_code = $(this).find("rsltCode").text();
+                    var ncs4_name = $(this).find("rsltName").text();
+                    var sprint  = "<tr><td>" +num+ "</td>";
+                        sprint += "<td>" +ncs4_code+ "</td>";
+                        sprint += "<td>" +ncs4_name+ "</td>";
+                        sprint += "</tr>";
+                    $('#region > tbody').append(sprint);
+                });
+            }
+        });
+    }
+</script>
+</body>
+</html>
