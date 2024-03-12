@@ -16,30 +16,23 @@
             <input type="text" id="key" placeholder="API KEY 값을 입력하세요." value="841bd167-8fb0-4f38-b839-29b40708e3f2">
         </div>
         <div>
-            <label>PageSize</label>
-            <input type="text" id="size" placeholder="페이지당 표시할 수량을 입력하세요.(최대 100개)" value="100">
-        </div>
-        <div>
             <label>Page</label>
             <input type="text" id="page" placeholder="출력 페이지 번호를 입력하세요." value="1">
         </div>
         <div>
-            <label>Start Date</label>
+            <label>페이지당 출력 수량</label>
+            <input type="text" id="size" placeholder="페이지당 표시할 수량을 입력하세요.(최대 100개)" value="100">
+        </div>
+        <div>
+            <label>교육 시작일</label>
             <input type="date" id="sdate" value="2024-01-01">
         </div>
         <div>
-            <label>End Date</label>
+            <label>교육 종료일</label>
             <input type="date" id="edate" value="2024-12-31">
         </div>
         <div>
-            <label>Sort1</label>
-            <select id="sort1">
-                <option value="ASC" selected>오름차순(ASC)</option>
-                <option value="DESC">내림차순(DESC)</option>
-            </select>
-        </div>
-        <div>
-            <label>Sort2</label>
+            <label>정렬 방법</label>
             <select  id="sort2">
                 <option value="TOT_FXNUM">모집인원(TOT_FXNUM)</option>
                 <option value="TRNG_BGDE" selected>훈련시작일(TRNG_BGDE)</option>
@@ -47,7 +40,14 @@
             </select>
         </div>
         <div>
-            <label>Area</label>
+            <label>정렬 순서</label>
+            <select id="sort1">
+                <option value="ASC" selected>오름차순(ASC)</option>
+                <option value="DESC">내림차순(DESC)</option>
+            </select>
+        </div>
+        <div>
+            <label>지역</label>
             <select id="area">
                 <option value="11">서울(11)</option>
                 <option value="26">부산(26)</option>
@@ -69,6 +69,30 @@
             </select>
         </div>
         <div>
+            <label>훈련유형</label>
+            <select id="case">
+                <option value="">훈련유형 선택</option>
+                <option value="C0061">국민내일배움카드(일반)(C0061)</option>
+                <option value="C0061S">국민내일배움카드(주 훈련대상 : 구직자)(C0061S)</option>
+                <option value="C0061I">국민내일배움카드(주 훈련대상 : 재직자)(C0061I)</option>
+                <option value="C0054">국가기간전략산업직종(C0054)</option>
+                <option value="C0055C">과정평가형훈련(C0055C)</option>
+                <option value="C0054G">기업맞춤형훈련(C0054G)</option>
+                <option value="C0054Y">스마트혼합훈련(C0054Y)</option>
+                <option value="C0054S">일반고특화훈련(C0054S)</option>
+                <option value="C0054I">4차산업혁명인력양성훈련(C0054I)</option>
+                <option value="C0104">K-디지털 트레이닝(C0104)</option>
+                <option value="C0105">K-디지털 기초역량훈련(C0105)</option>
+                <option value="C0103">플랫폼종사자훈련(C0103)</option>
+                <option value="C0102">산업구조변화대응(C0102)</option>
+                <option value="C0106">중장년새출발카운슬링(C0106)</option>
+                <option value="C0055">실업자 원격훈련(C0055)</option>
+                <option value="C0031">근로자 원격훈련(C0031)</option>
+                <option value="C0031F">근로자 외국어훈련(C0031F)</option>
+            </select>
+        </div>
+        <div>
+            <label></label>
             <button class="search">검색</button>
         </div>
     </div>
@@ -105,7 +129,7 @@
 <script>
 	// $(document).ready(function(){
 	// 	$.ajax({
-    //         url: 'https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do?authKey=841bd167-8fb0-4f38-b839-29b40708e3f2&returnType=XML&outType=1&pageNum=1&pageSize=100&srchTraStDt=20240101&srchTraEndDt='+Date.now()+'&sort=ASC&sortCol=TRNG_BGDE&srchTraArea1=41',
+    //         url: 'https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do?authKey=841bd167-8fb0-4f38-b839-29b40708e3f2&returnType=XML&outType=1&pageNum=1&pageSize=100&srchTraStDt=20240101&srchTraEndDt=20241231&sort=ASC&sortCol=TRNG_BGDE&srchTraArea1=41',
     //         type: 'GET',
     //         dataType: 'xml',
     //         error: function(){
@@ -159,8 +183,9 @@
         var sort1 = $("#sort1 option:selected").val();
         var sort2 = $("#sort2 option:selected").val();
         var area = $("#area option:selected").val();
-        var url = "https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do?authKey="+key+"&returnType=XML&outType=1&pageNum="+page+"&pageSize="+size+"&srchTraStDt="+sdate+"&srchTraEndDt="+edate+"&sort="+sort1+"&sortCol="+sort2+"&srchTraArea1="+area;
-        //console.log(url);
+        var tcase = $("#case option:selected").val();
+        var url = "https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do?authKey="+key+"&returnType=XML&outType=1&pageNum="+page+"&pageSize="+size+"&srchTraStDt="+sdate+"&srchTraEndDt="+edate+"&sort="+sort1+"&sortCol="+sort2+"&srchTraArea1="+area+"&crseTracseSe="+tcase;
+        console.log(url);
         $('#region > tbody').empty();
         $.ajax({
             url: url,
