@@ -10,7 +10,7 @@ ul,ol,li{list-style:none;margin:0;padding:0;}
     background-color:var(--color_whitegray);
 }
 .search_wrap div:nth-child(1){grid-column:1 / span 2;}
-.search_wrap div:nth-child(10){text-align:right;grid-column:auto / span 2;}
+.search_wrap div:nth-child(11){text-align:right;grid-column:auto / span 1;}
 .search_wrap label{color:var(--color_gray);font-size:14px;display:block;margin-bottom:4px;}
 .search_wrap input{border:1px solid var(--color_bordergray);padding:4px 8px;width:100%;}
 .search_wrap select{border:1px solid var(--color_bordergray);padding:4px 8px;width:100%;}

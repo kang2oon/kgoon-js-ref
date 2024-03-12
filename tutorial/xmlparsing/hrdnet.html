@@ -69,6 +69,63 @@
             </select>
         </div>
         <div>
+            <label>경기 상세지역</label>
+            <select id="area2">
+                <option value="">경기 상세지역</option>
+                <option value="41110">수원시(41110)</option>
+                <option value="41111">수원시 장안구(41111)</option>
+                <option value="41113">수원시 권선구(41113)</option>
+                <option value="41115">수원시 팔달구(41115)</option>
+                <option value="41117">수원시 영통구(41117)</option>
+                <option value="41130">성남시(41130)</option>
+                <option value="41131">성남시 수정구(41131)</option>
+                <option value="41133">성남시 중원구(41133)</option>
+                <option value="41135">성남시 분당구(41135)</option>
+                <option value="41150">의정부시(41150)</option>
+                <option value="41170">안양시(41170)</option>
+                <option value="41171">안양시 만안구(41171)</option>
+                <option value="41173">안양시 동안구(41173)</option>
+                <option value="41190">부천시(41190)</option>
+                <option value="41192">부천시 원미구(41192)</option>
+                <option value="41194">부천시 소사구(41194)</option>
+                <option value="41196">부천시 오정구(41196)</option>
+                <option value="41210">광명시(41210)</option>
+                <option value="41220">평택시(41220)</option>
+                <option value="41250">동두천시(41250)</option>
+                <option value="41270">안산시(41270)</option>
+                <option value="41271">안산시 상록구(41271)</option>
+                <option value="41273">안산시 단원구(41273)</option>
+                <option value="41280">고양시(41280)</option>
+                <option value="41281">고양시 덕양구(41281)</option>
+                <option value="41285">고양시 일산동구(41285)</option>
+                <option value="41287">고양시 일산서구(41287)</option>
+                <option value="41290">과천시(41290)</option>
+                <option value="41310">구리시(41310)</option>
+                <option value="41360">남양주시(41360)</option>
+                <option value="41370">오산시(41370)</option>
+                <option value="41390">시흥시(41390)</option>
+                <option value="41410">군포시(41410)</option>
+                <option value="41430">의왕시(41430)</option>
+                <option value="41450">하남시(41450)</option>
+                <option value="41460">용인시(41460)</option>
+                <option value="41461">용인시 처인구(41461)</option>
+                <option value="41463">용인시 기흥구(41463)</option>
+                <option value="41465">용인시 수지구(41465)</option>
+                <option value="41480">파주시(41480)</option>
+                <option value="41500">이천시(41500)</option>
+                <option value="41550">안성시(41550)</option>
+                <option value="41570">김포시(41570)</option>
+                <option value="41590">화성시(41590)</option>
+                <option value="41610">광주시(41610)</option>
+                <option value="41630">양주시(41630)</option>
+                <option value="41650">포천시(41650)</option>
+                <option value="41670">여주시(41670)</option>
+                <option value="41800">연천군(41800)</option>
+                <option value="41820">가평군(41820)</option>
+                <option value="41830">양평군(41830)</option>
+            </select>
+        </div>
+        <div>
             <label>훈련유형</label>
             <select id="case">
                 <option value="">훈련유형 선택</option>
@@ -172,6 +229,23 @@
     //         }
     //     });
 	// });
+    $(document).ready(function(){
+        var krarea = $("#area option:selected").val();
+        var ggarea = $("#area2");
+        if(krarea != 41){
+            ggarea.attr("disabled",true);
+        }        
+        $("#area").on("change", function(){
+            var krarea = $("#area option:selected").val();
+            var ggarea = $("#area2");
+            if(krarea != 41){
+                ggarea.attr("disabled",true);
+                $("#area2 option:eq(0)").prop("selected", true);
+            }else{
+                ggarea.attr("disabled",false);
+            }
+        });
+    });
 
     $('.search_wrap button').click(function(){
         var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
@@ -183,8 +257,9 @@
         var sort1 = $("#sort1 option:selected").val();
         var sort2 = $("#sort2 option:selected").val();
         var area = $("#area option:selected").val();
+        var area2 = $("#area2 option:selected").val();
         var tcase = $("#case option:selected").val();
-        var url = "https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do?authKey="+key+"&returnType=XML&outType=1&pageNum="+page+"&pageSize="+size+"&srchTraStDt="+sdate+"&srchTraEndDt="+edate+"&sort="+sort1+"&sortCol="+sort2+"&srchTraArea1="+area+"&crseTracseSe="+tcase;
+        var url = "https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do?authKey="+key+"&returnType=XML&outType=1&pageNum="+page+"&pageSize="+size+"&srchTraStDt="+sdate+"&srchTraEndDt="+edate+"&sort="+sort1+"&sortCol="+sort2+"&srchTraArea1="+area+"&srchTraArea2="+area2+"&crseTracseSe="+tcase;
         console.log(url);
         $('#region > tbody').empty();
         $.ajax({
