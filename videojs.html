@@ -31,6 +31,8 @@
     <div style="margin-top: 20px;">
         <button id="audio-only-btn" style="margin-right: 10px;">오디오만 재생</button>
         <button id="play3m-btn" style="margin-right: 10px;">3분 위치부터 재생</button>
+        <button id="skip10sf" style="margin-right: 10px;">10초 앞으로</button>
+        <button id="skip10sb" style="margin-right: 10px;">10초 뒤로</button>
     </div>
     
     <div style="margin-top: 30px;">
@@ -126,11 +128,15 @@
             //liveul: true,
             playbackRates: [0.5, 1, 1.5, 2, 2.5, 3],
             //captions: true,
-            // children: {
-            //     controlBar:{
-            //         fullscreenToggle: false
-            //     }
-            // }
+            //children: {
+            //    controlBar:{
+            //        fullscreenToggle: false,
+            //        skipButtons: {
+            //            forward: 10,
+            //            backward: 10
+            //        }
+            //    }
+            //}
             //controlBar:['playToggle', 'volumePanel', 'currentTimeDisplay', 'timeDivider', 'durationDisplay', 'progressControl', 'liveDisplay', 'remainingTimeDisplay', 'customControlSpacer', 'playbackRateMenuButton', 'chaptersButton', 'descriptionsButton', 'subsCapsButton', 'audioTrackButton', 'fullscreenToggle']
             controlBar:{
                 //pictureInPictureToggle: false,
@@ -199,7 +205,9 @@
             // var firstRangeStart = bufferedTimeRange.start(0);
             // var firstRangeEnd = bufferedTimeRange.end(0);
             // var firstRangeLength = firstRangeEnd - firstRangeStart;
-            // document.getElementById('played').innerText = "["+firstRangeStart+","+firstRangeEnd+"]";
+            //document.getElementById('played').innerText = "["+firstRangeStart+","+firstRangeEnd+"]";
+            //document.getElementById('played').innerText = player.played();
+            //console.log(player.played());
         });
 
 
@@ -223,6 +231,17 @@
         const play3mBtn = document.getElementById("play3m-btn");
         play3mBtn.addEventListener('click', function(){
             player.currentTime(180);
+            player.play();
+        });
+
+        const skip10sfBtn = document.getElementById("skip10sf");
+        skip10sfBtn.addEventListener('click', function(){
+            //player.skipButtons.forward(10);
+            player.currentTime(player.currentTime() + 10);
+        });
+        const skip10sbBtn = document.getElementById("skip10sb");
+        skip10sbBtn.addEventListener('click', function(){
+            player.currentTime(player.currentTime() - 10);
         });
 
         // 재생속도를 표시하는 <span> 요소
