@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0"/>
+	<title>Toast Message</title>
+    <link rel="preconnect" href="ttps://cdn.jsdelivr.net">
+    <link rel="preconnect" href="ttps://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+	<link rel="stylesheet" type="text/css" href="/tutorial/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/tutorial/css/toastMessage.css" />
+    <script src="https://kit.fontawesome.com/68ace2d14b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+	<div class="toast">
+        <div class="toast-content">
+            <i class="fas fa-solid fa-check check"></i>
+            <div class="message">
+                <span class="text text-1">Success</span>
+                <span class="text text-2">Your changes has been saved</span>
+            </div>
+        </div>
+        <i class="fa-solid fa-xmark close"></i>
+        <div class="progress"></div>
+    </div>
+    <button>Show Toast</button>
+</div>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" ></script>
+<script>
+    const button = document.querySelector("button"),
+          toast  = document.querySelector(".toast");
+    (closeIcon = document.querySelector(".close")) ,
+    (progress = document.querySelector(".progress"));
+
+    let timer1, timer2;
+
+    button.addEventListener("click", () => {
+        toast.classList.add("active");
+        progress.classList.add("active");
+
+        timer1 = setTimeout(() => {
+            toast.classList.remove("active");
+        }, 5000);
+        timer2 = setTimeout(() => {
+            progress.classList.remove("active");
+        },5300);
+    });
+
+    closeIcon.addEventListener("click", () => {
+        toast.classList.remove("active");
+        setTimeout(() => {
+            progress.classList.remove("active");
+        },300);
+
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+    });
+
+	$(document).ready(function(){
+		
+	});
+</script>
+</body>
+</html>
