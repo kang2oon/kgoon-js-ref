@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>XML Parsing</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+	<link rel="stylesheet" type="text/css" href="/tutorial/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/tutorial/css/xmlparsing.css" />
+</head>
+<body>
+<div class="container">
+    <div class="search_wrap">
+        <div>
+            <label>AuthKey</label>
+            <input type="text" id="key" placeholder="API KEY 값을 입력하세요." value="RG6KJYGUK3JQD5A5WCGARMNOC0B48244">
+        </div>
+        <div>
+            <label>분류코드</label>
+            <select  id="type">
+                <option value="A">A_일자리지원사업</option>
+                <option value="B">B_교육훈련</option>
+                <option value="C">C_대외활동</option>
+                <option value="D">D_기업지원정책</option>
+                <option value="F">F_탐나는기업</option>
+                <option value="G">G_채용정보</option>
+                <option value="H" selected>H_공공일자리</option>
+            </select>
+        </div>
+        <div>
+            <label>Page</label>
+            <input type="text" id="page" placeholder="출력 페이지 번호를 입력하세요." value="1">
+        </div>
+        <div>
+            <label>페이지당 출력 수량</label>
+            <input type="text" id="size" placeholder="페이지당 표시할 수량을 입력하세요.(최대 100개)" value="100">
+        </div>
+        <div>
+            <label></label>
+            <button class="search">검색</button>
+        </div>
+    </div>
+    <div class="page_info">
+        <div>총 <span class="total">0</span>개 과정</div>
+        <div class="totalpage"><span class="current">0</span><span class="last">0</span></div>
+    </div>
+	<table id="region" class="full">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>기관명</th>
+            <th>공고명</th>
+            <th>근무지역</th>
+            <th>채용분야</th>
+            <th>고용형태</th>
+            <th>모집시작일</th>
+            <th>모집종료일</th>
+            <th>URL</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" ></script>
+<script>
+    $(document).ready(function(){
+        
+    });
+
+    $('.search_wrap button').click(function(){
+        var key = $("#key").val();
+        var type = $("#type").val();
+        var size = $("#size").val();
+        var page = $("#page").val();
+        var url = "https://adst.jobaba.net/jobabaApi/v1.do?authKey="+key+"&type="+type+"&display="+size+"&startPage="+page;
+        console.log(url);
+        $('#region > tbody').empty();
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'xml',
+            success: function(xml){
+                console.log('1');
+                var cnt = $(xml).find("result").text();
+                var total = cnt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                $('.total').text(total);
+                var lastpage = Math.ceil(cnt/size).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                $('.current').text(page);
+                $('.last').text(lastpage);
+                $(xml).find("data").each(function(num){
+                    var num = num+1;
+                    var place = $(this).find("place").text(); //기관명
+                    var title = $(this).find("title").text(); //공고명
+                    var wrkArea = $(this).find("wrkArea").text(); //근무지역
+                    var gthrFld = $(this).find("gthrFld").text(); //채용분야
+                    var empTpNm = $(this).find("empTpNm").text(); //고용형태
+                    var startDate = $(this).find("startDate").text(); //모집시작일
+                    var endDate = $(this).find("endDate").text(); //모집종료일
+                    var jobabaUrl = $(this).find("jobabaUrl").text(); //잡아바URL
+
+                    var sprint  = "<tr><td>"+num+"</td>";
+                        sprint += "<td>"+place+"</td>";
+                        sprint += "<td>"+title+"</td>";
+                        sprint += "<td>"+wrkArea+"</td>";
+                        sprint += "<td>"+gthrFld+"</td>";
+                        sprint += "<td>"+empTpNm+"</td>";
+                        sprint += "<td>"+startDate+"</td>";
+                        sprint += "<td>"+endDate+"</td>";                        
+                        sprint += "<td><a href='"+jobabaUrl+"' target='_blank'>"+jobabaUrl+"</a></td>";
+                        sprint += "</tr>";
+                    $('#region > tbody').append(sprint);
+                });
+            },
+            error: function(){
+                alert('Error loading XML document');
+            }
+        });
+    });
+</script>
+</body>
+</html>
