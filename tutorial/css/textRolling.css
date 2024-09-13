@@ -1,0 +1,38 @@
+*{font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;box-sizing:border-box;}
+
+html,body{position:relative;width:100%;height:100%;margin:0;padding:0;color:#232323;color:var(--color_base);background-color:#f5f5f9;background-color:var(--color_whitegray);}
+ul,ol,li{list-style:none;margin:0;padding:0;}
+
+.card{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);}
+.loader{color:rgb(124,124,124);font-weight:500;font-size:36px;display:flex;height:48px;padding:8px;box-sizing: content-box;}
+.loader p{margin:0;padding:0;}
+.words{overflow:hidden;position:relative;}
+.words::after{content:"";position:absolute;inset:0;background:linear-gradient(var(--color_whitegray) 10%, transparent 20%, transparent 80%, var(--color_whitegray) 90%);z-index:20;}
+.word{display:block;height:100%;padding-left:8px;color:#956afa;animation:spin 4s infinite;}
+
+@keyframes spin {
+    10%{
+        transform: translateY(-103%);
+    }
+    25%{
+        transform: translateY(-100%);
+    }
+    35%{
+        transform: translateY(-203%);
+    }
+    50%{
+        transform: translateY(-200%);
+    }
+    60%{
+        transform: translateY(-303%);
+    }
+    75%{
+        transform: translateY(-300%);
+    }
+    85%{
+        transform: translateY(-403%);
+    }
+    100%{
+        transform: translateY(-400%);
+    }
+}
