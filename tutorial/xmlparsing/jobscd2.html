@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>XML Parsing</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+	<link rel="stylesheet" type="text/css" href="/tutorial/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/tutorial/css/xmlparsing.css" />
+</head>
+<body>
+<div class="container">
+    <div class="tab_wrap">
+        <ul class="ncsCate">
+            <li data-ncs="A">대분류</li>
+            <li data-ncs="B">중분류</li>
+            <li data-ncs="C" class="active">소분류</li>
+        </ul>
+    </div>
+	<table id="region">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Code</th>
+            <th>직종명</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" ></script>
+<script>
+	$(document).ready(function(){
+		job3();
+	});
+
+    $(".ncsCate li").click(function(){
+        $(".ncsCate li").removeClass("active");
+        $(this).addClass("active");
+        $('#region > tbody').empty();
+        var ncsType = $(this).attr("data-ncs");
+        switch(ncsType){
+            case "A": 
+                job1();
+                break;
+            case "B":
+                job2();
+                break;
+            case "C": 
+                job3();
+                break;
+        }
+    });
+
+    function job1(){
+        $.ajax({
+            url: 'https://www.work24.go.kr/cm/openApi/call/wk/callOpenApiSvcInfo21L01.do?returnType=XML&target=CMCD&authKey=c884c23d-f4cf-4a8d-96f2-d84313684f5c&dtlGb=2',
+            type: 'GET',
+            dataType: 'xml',
+            error: function(){
+                alert('Error loading XML document');
+            },
+            success: function(xml){
+                $(xml).find("oneDepth").each(function(num){
+                    num = num+1;
+                    var ncs1_code = $(this).children("jobsCd").text();
+                    var ncs1_name = $(this).children("jobsNm").text();
+                    var sprint  = "<tr><td>" +num+ "</td>";
+                        sprint += "<td>" +ncs1_code+ "</td>";
+                        sprint += "<td>" +ncs1_name+ "</td>";
+                        sprint += "</tr>";
+                    $('#region > tbody').append(sprint);
+                });
+            }
+        });
+    }
+	
+	function job2(){
+        $.ajax({
+            url: 'https://www.work24.go.kr/cm/openApi/call/wk/callOpenApiSvcInfo21L01.do?returnType=XML&target=CMCD&authKey=c884c23d-f4cf-4a8d-96f2-d84313684f5c&dtlGb=2',
+            type: 'GET',
+            dataType: 'xml',
+            error: function(){
+                alert('Error loading XML document');
+            },
+            success: function(xml){
+                $(xml).find("twoDepth").each(function(num){
+                    num = num+1;
+                    var ncs1_code = $(this).children("jobsCd").text();
+                    var ncs1_name = $(this).children("jobsNm").text();
+                    var sprint  = "<tr><td>" +num+ "</td>";
+                        sprint += "<td>" +ncs1_code+ "</td>";
+                        sprint += "<td>" +ncs1_name+ "</td>";
+                        sprint += "</tr>";
+                    $('#region > tbody').append(sprint);
+                });
+            }
+        });
+    }
+	
+	function job3(){
+        $.ajax({
+            url: 'https://www.work24.go.kr/cm/openApi/call/wk/callOpenApiSvcInfo21L01.do?returnType=XML&target=CMCD&authKey=c884c23d-f4cf-4a8d-96f2-d84313684f5c&dtlGb=2',
+            type: 'GET',
+            dataType: 'xml',
+            error: function(){
+                alert('Error loading XML document');
+            },
+            success: function(xml){
+                $(xml).find("threeDepth").each(function(num){
+                    num = num+1;
+                    var ncs1_code = $(this).children("jobsCd").text();
+                    var ncs1_name = $(this).children("jobsNm").text();
+                    var sprint  = "<tr><td>" +num+ "</td>";
+                        sprint += "<td>" +ncs1_code+ "</td>";
+                        sprint += "<td>" +ncs1_name+ "</td>";
+                        sprint += "</tr>";
+                    $('#region > tbody').append(sprint);
+                });
+            }
+        });
+    }
+</script>
+</body>
+</html>
