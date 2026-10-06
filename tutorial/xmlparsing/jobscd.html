@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>XML Parsing</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+	<link rel="stylesheet" type="text/css" href="/tutorial/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/tutorial/css/xmlparsing.css" />
+</head>
+<body>
+<div class="container">
+	<table id="region">
+        <thead>
+        <tr>
+            <th>No</th>
+            <!--th>Code</th>
+            <!--th>직종명(1단계)</th>
+            <th>직종명(2단계)</th-->
+			<th>직종명(3단계)</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" ></script>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+            url: 'https://www.work24.go.kr/cm/openApi/call/wk/callOpenApiSvcInfo21L01.do?returnType=XML&target=CMCD&authKey=c884c23d-f4cf-4a8d-96f2-d84313684f5c&dtlGb=2',
+            type: 'GET',
+            dataType: 'xml',
+            error: function(){
+                alert('Error loading XML document');
+            },
+            success: function(xml){
+                $(xml).find("oneDepth").each(function(num){
+                    var rg_code = $(this).find("jobsCd").eq(0).text();
+                    var rg_name = $(this).find("jobsNm").eq(0).text();
+                    var rg_code2 = "";
+                    var rg_name2 = "";
+					var rg_code3 = "";
+                    var rg_name3 = "";
+                    var rg_depth2 = "<ul>";
+                    var depth2  = $(this).find("twoDepth").each(function(){
+                        rg_code2 = $(this).children("jobsCd").text();
+                        rg_name2 = $(this).children("jobsNm").text();
+                        rg_depth2 += "<li>("+rg_code2+") "+rg_name2+"</li>";
+                    });
+                    rg_depth2 += "</ul>";
+					var rg_depth3 = "<ul>";
+					var depth3 = $(this).find("threeDepth").each(function(){
+						rg_code3 = $(this).find("jobsCd").text();
+						rg_name3 = $(this).find("jobsNm").text();
+						rg_depth3 += "<li>("+rg_code3+") "+rg_name3+"</li>";
+					});
+					rg_depth3 += "</ul>";
+
+                    var sprint  = "<tr><td>" +num+ "</td>";
+                      //  sprint += "<td>" +rg_code+ "</td>";
+                        //sprint += "<td>" +rg_name+ "</td>";
+                        //sprint += "<td>" +rg_depth2+ "</td>";
+						sprint += "<td>" +rg_depth3+ "</td>";
+                        sprint += "</tr>";
+                    $('#region > tbody').append(sprint);
+                });
+            }
+        });
+	});
+</script>
+</body>
+</html>
